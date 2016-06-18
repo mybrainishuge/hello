@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test page</title>
+  <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
+  <script src="http://js.leapmotion.com/leap-plugins-0.1.11.js"></script>
+  <script src='../bower_components/underscore/underscore.js'></script>
+</head>
+<body>
+<script>
+  var paused = false ;
+  function togglePause() {
+    paused = !paused;
+  }
+
+  var controllerOptions = {enableGestures:true};
+
+  Leap.loop(controllerOptions, (frame) =>{
+    
+    if(!paused) {
+
+      frame.hands.forEach((hand) => {
+        var data = [];
+
+        if(_(hand.fingers).every(finger => !finger.extended)) {
+          hand.fingers.forEach(finger => {
+            console.log(finger.type, finger.direction);
+            data.push(finger.direction);
+          });
+          var obj = {data: data};
+
+          fetch('http://localhost:3000/run', {
+              method: 'POST', 
+              body: JSON.stringify(obj),
+              headers: {"Content-type": "application/json"}
+            });
+        } else {
+          console.log('not closed');
+        }
+      });
+    }
+  });
+</script>
+<button id="pause" onclick="togglePause()">Pause</button>
+
+</body>
+</html>
