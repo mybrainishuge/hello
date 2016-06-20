@@ -5,58 +5,59 @@ var app = express();
 app.use(bodyparser.json());
 app.use(express.static(path.resolve(__dirname,'../client')));
 
-var ml = require('machine_learning');
+var brain = require('brain');
 
-var data = [], dt;
+app.get('/brain', (req, res) => {
 
-// app.get('/', (req, res) => {
-//   res.render("index");
-// });
+  var net = new brain.NeuralNetwork();
+
+ net.train([
+  {input:[0,0,0,0,0,-0.00953265, 0.0638593, -0.99791,
+0.0302952, -0.901895, 0.43089,
+-0.183438, -0.848622, 0.49617,
+-0.334163, -0.822958, 0.45942,
+-0.545984, -0.757856, 0.357151, 11.429999999999978], output: {aa: 1}},
+
+  {input:[0,1,1,1,1,-0.25735, -0.370085, -0.892641,
+0.0658166, 0.00730177, -0.997805,
+0.03123, 0.0226125, -0.999256,
+-0.0197074, 0.0521914, -0.998443,
+0.0372486, 0.132279, -0.990512, -46.35499999999999], output: {bb: 1}}, 
+
+  {input:[0,0,0,0,0, -0.572988, -0.210652, -0.79203,
+-0.24872, -0.80869, -0.533065,
+-0.331823, -0.814433, -0.476018,
+-0.221569, -0.974411, -0.0378167,
+-0.390104, -0.918074, -0.070425, -8.320999999999998], output:{ss: 1}},
+
+  {input: [0,0,0,0,0, -0.240954, -0.0342797, -0.969931,
+0.0425051, -0.827703, 0.559555,
+-0.212048, -0.785337, 0.58162,
+-0.365585, -0.766547, 0.527971,
+-0.526786, -0.688836, 0.497997, 7.371000000000009], output:{tt:1}}
+  ]);
+
+var output = net.run([0,0,0,0,0, -0.277351, 0.0622898, -0.958747,
+0.173941, -0.829297, 0.531047,
+-0.0759547, -0.821721, 0.564805,
+-0.31771, -0.865285, 0.387741,
+-0.601641, -0.736375, 0.309485, 37.03899999999999]);
+
+  console.log('OUTrPrUT', output);
+
+  res.end();
+
+});
 
 app.post('/run', (req, res) => {
-  /*
-  TODO: refactor code below to capture input data and write it to database
-  save it as an object with property {letter name} and value equal to the dataset
 
-  we will need to repeat and rinse this process for the letters that we want to store and train
-  
-  */
-
-
-data.push(req.body.data);
-
-var result = [];
-for (var i = 0; i < data.length; i++) {
-  result.push('a');
-}
- 
- 
-dt = new ml.DecisionTree({
-    data : data,
-    result : result
-});
- 
-dt.build();
-
-res.end();
- 
+  res.end();  
 });
 
 
 app.get('/test', (r, rr) => {
-  var testData = [[-0.25009, 0.135744, -0.95866],
-[0.178512, -0.933148, 0.31204],
-[-0.0210506, -0.910785, 0.412344],
-[-0.227358, -0.895927, 0.381605],
-[-0.419441, -0.844405, 0.333241]];
- 
-console.log("Classify : ", dt.classify(testData));
- 
-// dt.prune(1.0); // 1.0 : mingain.
-// dt.print();
 
-rr.end();
-
+  rr.end();
 });
 
 app.listen(3000, () => console.log('listening on 3000'));

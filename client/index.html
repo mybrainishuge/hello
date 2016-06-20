@@ -4,10 +4,14 @@
   <title>Test page</title>
   <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
   <script src="http://js.leapmotion.com/leap-plugins-0.1.11.js"></script>
-  <script src='../bower_components/underscore/underscore.js'></script>
+  <!-- <script src='../bower_components/underscore/underscore.js'></script> -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
+
 </head>
 <body>
 <script>
+  
+
   var paused = false ;
   function togglePause() {
     paused = !paused;
@@ -24,18 +28,28 @@
 
         if(_(hand.fingers).every(finger => !finger.extended)) {
           hand.fingers.forEach(finger => {
-            console.log(finger.type, finger.direction);
-            data.push(finger.direction);
+            console.log(finger.type, finger.extended, finger.direction);
+            data.push(finger.extended, finger.direction);
           });
+          var diff = hand.fingers[0].stabilizedTipPosition[1] - hand.fingers[1].stabilizedTipPosition[1];
+          if (diff > 0) console.log('SMTN: ', hand.fingers[0].stabilizedTipPosition[1] - hand.fingers[1].stabilizedTipPosition[1]);
+          data.push(diff);
+
           var obj = {data: data};
 
-          fetch('http://localhost:3000/run', {
-              method: 'POST', 
-              body: JSON.stringify(obj),
-              headers: {"Content-type": "application/json"}
-            });
+          // fetch('http://localhost:3000/run', {
+          //     method: 'POST', 
+          //     body: JSON.stringify(obj),
+          //     headers: {"Content-type": "application/json"}
+          //   });
         } else {
-          console.log('not closed');
+          // console.log('stmn: ', hand.fingers[0].stabilizedTipPosition[1] - hand.fingers[1].stabilizedTipPosition[1]);
+          // console.log('thumb: ', hand.fingers[0].extended);
+          // if (!hand.fingers[0].extended) {
+          //   hand.fingers.forEach(finger => {
+          //     console.log(finger.extended,  finger.direction);
+          //   });
+          // }
         }
       });
     }
