@@ -1,0 +1,21 @@
+{
+  "name": "hello",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Digi-talk"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/prateekm33/hello",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
+}
