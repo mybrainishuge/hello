@@ -16,7 +16,19 @@ app.get('/brain', (req, res) => {
   if (extendedCheckResults.true > extendedCheckResults.false) {
     //is extended
   } else {
-    //is not extended
+    //is not extended then send to neuron that will parse 
+    //and transfer data to [a, e, m, n, o, s, t, c] paths
+
+    var OC_checkNet = require('./neurons/knuckle_yRangerFinder.js');
+    var isOC = OC_checkNet.run(/*DATA*/).oc;
+    if (isOC) {
+      //neuron to differentiate O & C
+    } else {
+      //neuron to differentiate E & A/S/M/N/T
+      var e_checkNet.
+
+    }
+
   }
 
   
