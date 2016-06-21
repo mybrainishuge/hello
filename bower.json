@@ -6,7 +6,6 @@
     "Digi-talk"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/prateekm33/hello",
   "private": true,
   "ignore": [
     "**/.*",
