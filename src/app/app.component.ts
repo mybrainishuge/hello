@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { MdToolbar } from '@angular2-material/toolbar';
 import { MdButton } from '@angular2-material/button';
 import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
@@ -15,6 +16,7 @@ import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
   directives: [
+    ROUTER_DIRECTIVES,
     MD_SIDENAV_DIRECTIVES,
     MD_LIST_DIRECTIVES,
     MD_CARD_DIRECTIVES,
@@ -29,5 +31,5 @@ import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
   providers: [MdIconRegistry, MdRadioDispatcher]
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'root app works!';
 }
