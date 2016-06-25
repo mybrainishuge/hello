@@ -1,0 +1,58 @@
+<p>
+  dashboard works!
+</p>
+
+<h5>Dashboard Routes</h5>
+
+<a [routerLink]="['/dashboard/home']">Home</a>
+<a [routerLink]="['/dashboard/learn']">Learn</a>
+<a [routerLink]="['/dashboard/connect']">Connect</a>
+<a [routerLink]="['/dashboard/create']">Create</a>
+
+<div class="inner-outlet">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- <md-sidenav-layout fullscreen>
+  <md-sidenav #sidenav>
+    <md-nav-list>
+      <a md-list-item>
+        <md-icon md-list-icon>assignment</md-icon>
+        <span md-line>Learn</span>
+        <span md-line class="secondary">Expand your ASL knowlege</span>
+      </a>
+      <a md-list-item>
+        <md-icon md-list-icon>forum</md-icon>
+        <span md-line>Connect</span>
+        <span md-line class="secondary">Share your ASL knowledge</span>
+      </a>
+    </md-nav-list>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.open()">
+      <md-icon>menu</md-icon>
+    </button>
+
+    hello.
+  </md-toolbar>
+
+  <md-card>
+    <md-card-title>Learn</md-card-title>
+    <md-card-content class="secondary">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat.
+    </md-card-content>
+  </md-card>
+
+  <md-card>
+    <md-card-title>Connect</md-card-title>
+    <md-card-content class="secondary">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat.
+    </md-card-content>
+  </md-card>
+
+</md-sidenav-layout>
+
+
+<p>Learn an unspoken language and communicate with someone new.</p>
+ -->
