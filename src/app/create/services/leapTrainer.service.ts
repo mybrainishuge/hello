@@ -5,25 +5,28 @@ import { AppState } from '../../app.service';
 
 @Injectable()
 export class LeapTrainerService {
-  constructor(private createPageState: CreatePageState, private appState: AppState) {
-
+  trainerCtrl;
+  trainer;
+  constructor(
+    private createPageState: CreatePageState,
+    private appState: AppState) {
   }
 
-
-  Leap = require('leapjs');
+  // Leap = require('leapjs');
   LeapTrainer = require('../../lib/leapTrainer.js');
-  trainerCtrl = new this.Leap.Controller();
-  trainer = new this.LeapTrainer.Controller({
-    controller: this.trainerCtrl,
-    convolutionFactor: 2
-  });
 
   _initLeapTrainer() {
+    this.trainerCtrl = this.appState._initLeapController();
+    this.trainerCtrl.connect();
+    this.trainer = new this.LeapTrainer.Controller({
+      controller: this.trainerCtrl,
+      convolutionFactor: 2
+    });
     // var s = this.createPageState._state;
     var s = this.createPageState;
-    this.appState._initRiggedHand();
+    // this.appState._initLeapController();
 
-    this.trainerCtrl.on('connect', () => console.log('connected'));
+    // this.trainerCtrl.on('connect', () => console.log('connected'));
     this.trainer.on('gesture-created', (gestureName, trainingSkipped) => {
 
        //TODO: change input of gesture name to a form so user can hit enter instead of clicking create
@@ -44,7 +47,7 @@ export class LeapTrainerService {
        //handle training complete event
        console.log('training complete');
        s.set("trainingComplete", true);
-       
+
      });
 
      this.trainer.on('training-countdown', (countdown) => {
@@ -88,6 +91,6 @@ export class LeapTrainerService {
     .on('connect', () => {
       console.log('connected');
     });
-  } 
-  
+  }
+
 }

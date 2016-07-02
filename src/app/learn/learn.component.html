@@ -1,10 +1,10 @@
-<div class="head-center">
-  <h1 class="animated fadeInDown">Learn</h1>
-  <p class="animated pulse">Expand your knowledge of American Sign Language.</p>
-</div>
+<div class="">
+  <div class="head-center">
+    <h1 class="animated fadeInDown">Learn</h1>
+    <p class="animated pulse">Expand your knowledge of American Sign Language.</p>
+  </div>
 
-<div class="container animated fadeIn">
-  <div class="alphabet">
+  <div class="container animated fadeIn">
     <md-tab-group class="alphabet-container animated pulse">
       <md-tab>
         <template md-tab-label>Alphabet</template>
@@ -21,10 +21,8 @@
         <template md-tab-content></template>
       </md-tab>
     </md-tab-group>
-  </div>
 
-  <div *ngIf="showImgDiv" class="image">
-    <div class="image-container">
+    <div *ngIf="showImgDiv" class="image-container">
       <div class="capture-button">
         <button md-button color="primary" (click) = "hideImgDiv();"> Click when READY </button>
       </div>
@@ -32,23 +30,18 @@
         <img [src] = "imageUrl"/>
       </div>
     </div>
-  </div>
 
-  <div *ngIf="showCaptureDiv" class="capture">
-    <div class="capture-container">
-    <button md-button color="primary" (click) = "hideCaptureDiv()"> DONE </button>
+    <div *ngIf="showCaptureDiv" class="capture">
+      <div class="capture-container">
+      <button md-button color="primary" (click) = "hideCaptureDiv()"> DONE </button>
+      </div>
     </div>
-  </div>
 
-  <div *ngIf="mastered.length" class='score-container'>
-    <div class = 'score'>
-      You have mastered : {{ mastered }}
+    <div *ngIf="mastered.length" class='score-container'>
+      <div class = 'score'>
+        You have mastered : {{ mastered }}
+      </div>
     </div>
-  </div>
 
+  </div>
 </div>
-
-
-
-
-

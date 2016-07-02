@@ -1,35 +1,21 @@
 .container {
-  float: left;
-  /*margin-top: 30px;*/
-  /*margin-left: 30px;*/
-  width: 1000px;
-  height: 650px;
+  /*float: left;*/
+  /*margin-right: 10%;*/
+  /*margin-left: 10%;*/
+  margin: 0 auto;
+  width: 870px;
+  height: 490px;
   overflow: hidden;
   padding: 25px;
-}
-
-.alphabet {
-  float: left;
-  width: 380px;
-  height: 350px;
-  background-color: white;
-}
-
-.image {
-  float: left;
-  width: 500px;
-  height: 500px;
-  margin-left: 70px;
-  position: relative;
-  overflow: hidden;
-  z-index: 2;
+  /*border: 1px solid;*/
 }
 
 .image-container {
+  float: left;
   width: 380px;
   height: 350px;
   border: 0.2px solid;
-  border-color: #b3b3b3;
+  border-color: #b3b3b3 ;
   background-color: white;
   padding: 20px;
   position: relative;
@@ -51,32 +37,29 @@
   width: 380px;
   height: 350px;
   border: 0.2px solid;
-  border-color: #b3b3b3;
-  background-color: #e6e6e6;
+  border-color: #b3b3b3 ;
+  background-color: #e6e6e6 ;
   padding: 20px;
   position: relative;
   overflow: hidden;
 }
 
 .image-display {
-  width: 70%;
-  margin: 0 auto;
+  margin: 0;
   bottom: 0px;
   position: absolute;
 }
 
 .alphabet-container {
+  float: left;
   width: 380px;
   height: 350px;
   border: 0.2px solid;
-  border-color: #b3b3b3;
-  background-color: white;
   padding: 20px;
   border-radius: 3px;
-}
-
-.alphabet {
-  padding-right: 10px;
+  margin-right: 25px;
+  border-color: #b3b3b3 ;
+  background-color: white;
 }
 
 .button-container {

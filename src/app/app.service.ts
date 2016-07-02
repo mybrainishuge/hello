@@ -41,16 +41,21 @@ export class AppState {
     return this._state[prop] = value;
   }
 
-
   _clone(object) {
     // simple object clone
     return JSON.parse(JSON.stringify( object ));
   }
 
-  _initRiggedHand() {
+  _initLeapController() {
+    var Leap = require('leapjs');
     require('./lib/leap-plugins.js');
     require('./lib/riggedHand.js');
+    var controller = new Leap.Controller();
+
+    //connect ctrl at the end of logic
+    controller.use('riggedHand')
+      // .connect()
+      .on('connect', () => console.log('controller connected'));
+    return controller;
   }
-
-
 }
