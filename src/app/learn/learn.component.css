@@ -1,98 +1,119 @@
-.container {
-  /*float: left;*/
-  /*margin-right: 10%;*/
-  /*margin-left: 10%;*/
-  margin: 0 auto;
-  width: 870px;
-  height: 490px;
-  overflow: hidden;
-  padding: 25px;
-  /*border: 1px solid;*/
-}
-
-.image-container {
-  float: left;
-  width: 380px;
-  height: 350px;
-  border: 0.2px solid;
-  border-color: #b3b3b3 ;
-  background-color: white;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 3px;
-}
-
-.capture {
-  float: left;
-  width: 500px;
-  height: 500px;
-  margin-left: 70px;
-  position: relative;
-  overflow: hidden;
-  z-index: 10;
-}
-
-.capture-container {
-  width: 380px;
-  height: 350px;
-  border: 0.2px solid;
-  border-color: #b3b3b3 ;
-  background-color: #e6e6e6 ;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-.image-display {
-  margin: 0;
-  bottom: 0px;
-  position: absolute;
-}
-
-.alphabet-container {
-  float: left;
-  width: 380px;
-  height: 350px;
-  border: 0.2px solid;
-  padding: 20px;
-  border-radius: 3px;
-  margin-right: 25px;
-  border-color: #b3b3b3 ;
-  background-color: white;
-}
-
-.button-container {
-  float: left;
-  overflow: hidden;
-}
-
-.capture-button {
-  right: 10px;
-  margin-top: 10px;
-  position: absolute;
-}
-
-.score-container {
-  height: 30px;
-  width: 840px;
-  top: 620px;
-  background-color: white;
-  position: absolute;
-  padding: 20px;
-}
-
-.score {
-  text-align: center;
-  font-size: 18px;
-}
-
-.alphabet-button {
-  padding: 3px;
-  float: left;
-  position: relative;
+md-toolbar {
+  border-radius: 3px 3px 0 0;
 }
 
 .head-center {
   text-align: center;
 }
+
+.alphabet-container {
+  float: left;
+  position: relative;
+  width: 320px;
+  height: 65vh;
+  min-height: 428px;
+  margin-left: 3%;
+  /*border: 1px solid black;*/
+  border-radius: 3px;
+  /*background-color: rgba(1, 150, 136, 0.19);*/
+}
+
+.letters {
+  margin: auto;
+  margin-top: 19px;
+  width: 282px;
+  height: 380px;
+}
+
+.letter-buttons {
+  float: left;
+  margin: 3px;
+}
+
+.graphic-container {
+  float: left;
+  width: 62vw;
+  height: 65vh;
+  margin-left: 3%;
+  margin-right: 3%;
+  /*border: 1px solid;*/
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.87);
+  box-shadow: inset 0px 0px 50px 0px rgba(0,0,0,0.75);
+}
+
+.hand-container {
+  position:fixed;
+  bottom:0px;
+  width:100%;
+}
+
+.hand-image {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hand-btn {
+  color: white;
+  width: 44%;
+  max-width: 350px;
+}
+
+#ltMainContainer {
+  /*float: left;*/
+  /*position: relative;*/
+  width: 100%;
+  height: 100%;
+  /*margin-left: 3%;*/
+  /*margin-right: 3%;*/
+  /*border: 1px solid black;*/
+  /*border-radius: 3px;*/
+  /*background-color: rgba(0, 0, 0, 0.87);*/
+  /*box-shadow: inset 0px 0px 50px 0px rgba(0,0,0,0.75);*/
+}
+
+canvas {
+  pointer-events: none;
+}
+/*
+#createOptions {
+  float: left;
+  position: relative;
+  width: 30vw;
+  height: 65vh;
+  margin-left: 3%;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+#createOptionsList {
+  padding: 3%;
+  margin: 0;
+  text-align: center;
+}
+
+#createOptionsList li {
+  list-style-type: none
+}
+
+#createOptionsList md-input {
+  width: 90%;
+}
+
+li > button {
+  width: 90%;
+  max-width: 350px;
+}
+
+#recognizedGesture, #gestureOptions {
+  background-color: blue;
+  color: white;
+  text-align: center;
+}
+
+#gestureOptions {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}*/

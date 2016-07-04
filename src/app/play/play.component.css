@@ -4,7 +4,7 @@
   width: 60vw;
   height: 65vh;
   margin-left: 3%;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   border-radius: 3px;
   /*background-color: black;*/
   background-color: rgba(0, 0, 0, 0.87);
@@ -16,7 +16,7 @@ canvas {
 }
 
 #composeOutput {
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   position: relative;
   width: 30vw;
   height: 65vh;
@@ -24,6 +24,7 @@ canvas {
   margin-right: 3%;
   float: left;
   border-radius: 3px;
+  background-color: rgba(1, 150, 136, 0.19);
 }
 
 .head-center {

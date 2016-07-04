@@ -1,3 +1,7 @@
+.head-center {
+  text-align: center;
+}
+
 #ltMainContainer {
   float: left;
   position: relative;
@@ -5,7 +9,7 @@
   height: 65vh;
   margin-left: 3%;
   margin-right: 3%;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   border-radius: 3px;
   /*background-color: black;*/
   background-color: rgba(0, 0, 0, 0.87);
@@ -22,8 +26,9 @@ canvas {
   width: 30vw;
   height: 65vh;
   margin-left: 3%;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   border-radius: 3px;
+  background-color: rgba(1, 150, 136, 0.19);
 }
 
 #createOptionsList {
@@ -55,8 +60,4 @@ li > button {
   width: 100%;
   position: absolute;
   bottom: 0;
-}
-
-.head-center {
-  text-align: center;
 }

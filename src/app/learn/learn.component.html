@@ -1,47 +1,68 @@
-<div class="">
+<div class="animated fadeIn">
   <div class="head-center">
     <h1 class="animated fadeInDown">Learn</h1>
     <p class="animated pulse">Expand your knowledge of American Sign Language.</p>
   </div>
 
-  <div class="container animated fadeIn">
-    <md-tab-group class="alphabet-container animated pulse">
-      <md-tab>
-        <template md-tab-label>Alphabet</template>
-        <template md-tab-content>
-          <div class="button-container">
-            <div class="alphabet-button animated zoomIn" *ngFor="let ltr of letters" >
-              <button md-raised-button color="{{ltr.color}}" (click) = "clicked(ltr.val)"> {{ltr.val}}</button>
-            </div>
-          </div>
-        </template>
-      </md-tab>
-      <md-tab>
-        <template md-tab-label>Gestures</template>
-        <template md-tab-content></template>
-      </md-tab>
-    </md-tab-group>
+  <md-tab-group class="alphabet-container animated pulse">
+    <md-tab>
+      <template md-tab-label>Alphabet</template>
+      <template md-tab-content>
+        <div class="letters">
+          <!-- <div  > -->
+            <button *ngFor="let letter of letters" class="letter-buttons animated zoomIn" md-raised-button color="{{letter.color}}" (click)="clicked(letter.val)">{{letter.val}}</button>
+          <!-- </div> -->
+        </div>
+      </template>
+    </md-tab>
+      <template md-tab-label>Gestures</template>
+      <template md-tab-content>not the poops</template>
+    <md-tab>
 
-    <div *ngIf="showImgDiv" class="image-container">
-      <div class="capture-button">
-        <button md-button color="primary" (click) = "hideImgDiv();"> Click when READY </button>
-      </div>
-      <div *ngIf="clickedLtr" class="image-display">
-        <img [src] = "imageUrl"/>
+    </md-tab>
+  </md-tab-group>
+
+  <div class="graphic-container animated fadeInRight">
+    <div *ngIf="!riggedHand">
+      <md-toolbar color="primary">
+        <span class="fill"></span>
+        <button *ngIf="!clickedLtr" md-button color="warn" class="hand-btn animated bounce">
+          Click a letter to view a sign
+        </button>
+        <button *ngIf="clickedLtr" md-raised-button color="warn" class="hand-btn animated bounceIn" (click)="clickedLtr = ''">
+          Hide the image
+        </button>
+        <span *ngIf="clickedLtr" class="fill"></span>
+        <button *ngIf="clickedLtr" md-raised-button color="warn" class="hand-btn animated bounceIn" (click)="showRiggedHand()">
+          Try it with Leap Motion
+        </button>
+        <span class="fill"></span>
+      </md-toolbar>
+
+      <div *ngIf="clickedLtr" class="hand-container animated fadeIn">
+        <img class="hand-image" [src]="imageUrl"/>
       </div>
     </div>
 
-    <div *ngIf="showCaptureDiv" class="capture">
-      <div class="capture-container">
-      <button md-button color="primary" (click) = "hideCaptureDiv()"> DONE </button>
+    <div *ngIf="riggedHand" id="ltMainContainer">
+      <md-toolbar color="primary">
+        <span class="fill"></span>
+        <button md-button color="warn" class="hand-btn animated flipInY">
+          Try signing the letter {{clickedLtr.toUpperCase()}}
+        </button>
+        <!-- <button *ngIf="clickedLtr" md-raised-button color="warn" class="hand-btn animated bounceIn" (click)="showRiggedHand()">
+          Try it with Leap Motion
+        </button> -->
+        <span class="fill"></span>
+      </md-toolbar>
+      <div id="ltContainer">
+        <div id="recognizedGesture"></div>
       </div>
     </div>
-
-    <div *ngIf="mastered.length" class='score-container'>
-      <div class = 'score'>
-        You have mastered : {{ mastered }}
-      </div>
-    </div>
-
   </div>
+
 </div>
+
+
+
+

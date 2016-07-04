@@ -45,16 +45,15 @@ import { RouterActive } from './router-active';
 
 export class App {
   angularclassLogo = 'assets/img/asl-d.png';
-  loading = false;
+  loading = true;
   name = 'hello.';
   url = 'https://github.com/digi-talk/hello';
 
-  constructor(public appState: AppState) {
-
-  }
+  constructor(public appState: AppState) { }
 
   ngOnInit() {
     // console.log('Initial App State', this.appState.state);
+    this.loading = false;
   }
 
   logout() {
