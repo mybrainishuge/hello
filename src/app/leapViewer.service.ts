@@ -16,16 +16,4 @@ export class LeapViewer {
 
   constructor(private appState: AppState) { }
 
-  Leap = require('leapjs');
-  controller = new this.Leap.Controller();
-
-  _initLeapHand() {
-    this.appState._initLeapController();
-
-    //connect ctrl at the end of logic
-    this.controller.use('riggedHand')
-      .connect()
-      .on('connect', () => console.log('controller connected'));
-  }
-
 }

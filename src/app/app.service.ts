@@ -48,14 +48,16 @@ export class AppState {
 
   _initLeapController() {
     var Leap = require('leapjs');
-    require('./lib/leap-plugins.js');
     require('./lib/riggedHand.js');
+    require('./lib/leap-plugins.js');
+    console.log('Initializing Leap controller...');
     var controller = new Leap.Controller();
+    console.log('Controller initialized:', controller);
 
     //connect ctrl at the end of logic
     controller.use('riggedHand')
-      // .connect()
-      .on('connect', () => console.log('controller connected'));
+      .connect()
+      .on('connect', () => console.log('Controller connected.'));
     return controller;
   }
 }

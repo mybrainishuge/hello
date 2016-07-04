@@ -1,26 +1,26 @@
-/*                    
- * LeapJS Rigged Hand - v0.1.7 - 2015-03-09                    
- * http://github.com/leapmotion/leapjs-rigged-hand/                    
- *                    
- * Copyright 2015 LeapMotion, Inc                    
- *                    
- * Licensed under the Apache License, Version 2.0 (the "License");                    
- * you may not use this file except in compliance with the License.                    
- * You may obtain a copy of the License at                    
- *                    
- *     http://www.apache.org/licenses/LICENSE-2.0                    
- *                    
- * Unless required by applicable law or agreed to in writing, software                    
- * distributed under the License is distributed on an "AS IS" BASIS,                    
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.                    
- * See the License for the specific language governing permissions and                    
- * limitations under the License.                    
- *                    
- */                    
+/*
+ * LeapJS Rigged Hand - v0.1.7 - 2015-03-09
+ * http://github.com/leapmotion/leapjs-rigged-hand/
+ *
+ * Copyright 2015 LeapMotion, Inc
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 
 ;(function( window, undefined ){
 
-  console.log('does this even work?');
+  console.log('riggedHand module loaded.');
 /**
  * @author alteredq / http://alteredqualia.com/
  * @author mr.doob / http://mrdoob.com/
@@ -193,7 +193,7 @@ rigs.right = {
   "animations" : []
 };
 (function() {
-  
+
 // underscore's _.each implementation, use for _.extend
 var _each = function(obj, iterator, context) {
     if (obj == null) return obj;
@@ -370,7 +370,7 @@ function onReady(handler) {
       this.renderer = new THREE.WebGLRenderer({
         alpha: true
       });
-      var ang2Element = 
+      var ang2Element =
       this.renderer.setClearColor(0x000000, 0);
       this.renderer.setSize(window.innerWidth, window.innerHeight);
       this.renderer.domElement.style.position = 'relative';
@@ -419,10 +419,12 @@ function onReady(handler) {
     if (!scope.parent) {
       scope.initScene();
       scope.parent = scope.scene;
+      document.riggedElement = scope.renderer.domElement;
 
       onReady(function() {
         // return document.body.appendChild(scope.renderer.domElement);
-        console.log(document.getElementById('ltContainer'), 'is????');
+        console.log('Found ltContainer Id. Appending canvas...', document.getElementById('ltContainer'));
+        console.log('DOM Element:', scope.renderer.domElement);
         return document.getElementById('ltContainer').appendChild(scope.renderer.domElement);
       });
     }

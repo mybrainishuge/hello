@@ -9,16 +9,13 @@
       <template md-tab-label>Alphabet</template>
       <template md-tab-content>
         <div class="letters">
-          <!-- <div  > -->
-            <button *ngFor="let letter of letters" class="letter-buttons animated zoomIn" md-raised-button color="{{letter.color}}" (click)="clicked(letter.val)">{{letter.val}}</button>
-          <!-- </div> -->
+          <button *ngFor="let letter of letters" class="letter-buttons animated zoomIn" md-raised-button color="{{letter.color}}" (click)="clicked(letter.val)">{{letter.val}}</button>
         </div>
       </template>
     </md-tab>
+    <md-tab>
       <template md-tab-label>Gestures</template>
       <template md-tab-content>not the poops</template>
-    <md-tab>
-
     </md-tab>
   </md-tab-group>
 
@@ -50,9 +47,6 @@
         <button md-button color="warn" class="hand-btn animated flipInY">
           Try signing the letter {{clickedLtr.toUpperCase()}}
         </button>
-        <!-- <button *ngIf="clickedLtr" md-raised-button color="warn" class="hand-btn animated bounceIn" (click)="showRiggedHand()">
-          Try it with Leap Motion
-        </button> -->
         <span class="fill"></span>
       </md-toolbar>
       <div id="ltContainer">

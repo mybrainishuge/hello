@@ -12,13 +12,11 @@ import { AppState } from '../app.service';
 export class Spell implements OnInit {
 
   state = this.leapViewer._state;
-  controller;
+
   constructor(
     private appState: AppState,
     private leapViewer: LeapViewer) {
-    // this.leapViewer._initLeapHand();
-    this.controller = this.appState._initLeapController();
-    this.controller.connect();
+    this.appState._initLeapController();
   }
 
   ngOnInit() { }
