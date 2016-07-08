@@ -27,7 +27,7 @@
     <div *ngIf="!riggedHand">
       <md-toolbar color="primary">
         <span class="fill"></span>
-        <span *ngIf="!clickedLtr " class="hand-btn animated bounce">
+        <span *ngIf="!clickedLtr" class="hand-btn animated bounce">
           Click a letter or gesture to view it
         </span>
         <button *ngIf="clickedLtr" md-raised-button color="warn" class="hand-btn animated bounceIn" (click)="clickedLtr = ''">

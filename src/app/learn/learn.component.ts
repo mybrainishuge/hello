@@ -80,7 +80,7 @@ export class Learn implements OnInit {
 
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   clicked(ltr) {
     ltr = ltr.toLowerCase();
@@ -124,7 +124,7 @@ export class Learn implements OnInit {
   retryLtr() {
     this.ltrChecked = false;
     this.showRiggedHandLtr();
-  } 
+  }
 
   changeLetterColor() {
     let isCorrectLetter = this.letterCheckingService.getIsLetter();
@@ -165,7 +165,7 @@ export class Learn implements OnInit {
     setTimeout(function() {
       document.dispatchEvent(new Event('ltContainerAdded'));
     }, 0);
-    
+
     this.checkLetter();
   }
 
@@ -189,7 +189,7 @@ export class Learn implements OnInit {
 
   showRiggedHandGest() {
     this.riggedHand = true;
-    
+
     this.initGCtrl();
 
     setTimeout(function() {
@@ -205,7 +205,6 @@ export class Learn implements OnInit {
       this.gestureCtrlConnected = true;
     }
     this.trainer.listening = true;
-
   }
 
   private GestureRecCtrl;
@@ -215,13 +214,13 @@ export class Learn implements OnInit {
    deviceStopped_CB() {
       // console.log('device has stopped streaming');
       this.connected = false;
-      //TODO: handle UI 
+      //TODO: handle UI
     }
 
     deviceStreaming_CB() {
       // console.log('device has started streaming');
       this.connected = true;
-      //TODO: handle UI 
+      //TODO: handle UI
     }
 
   _initGestureRecognition() {
@@ -232,10 +231,6 @@ export class Learn implements OnInit {
       // console.log('disconnecting g ctrl!!!!!!...');
     })
 
-    // console.log('testing...');
-
-
-    // console.log(this.localState.gestures);
     var poses = {};
     this.gestureNames.forEach(name => {
       poses[name] = false;
@@ -263,7 +258,6 @@ export class Learn implements OnInit {
       } else {
         // console.log('Almost', this.clickedGesture,'...', allHits)
       }
-
     });
 
     this.trainer.on('gesture-recognized', (bestHit, closestGestureName, allHits) => {

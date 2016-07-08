@@ -12,7 +12,7 @@ export class AppState {
     authenticated: false,
     learnPage: false,
     isDisabled: true,
-    myName: 'Richard',
+    // myName: 'Richard',
     title: 'hello',
     google: false,
     userEmail: ''
@@ -24,7 +24,7 @@ export class AppState {
   public gestureUrl: string = this.url;
 
   constructor(private http: Http) {
-    // retrieve gestures from database and store in client's localStorage 
+    // retrieve gestures from database and store in client's localStorage
          // let path = window.location.href.split('/');
          // window.history.pushState(this.appState._state, null, path[path.length -1]);
          // console.log(history.state);

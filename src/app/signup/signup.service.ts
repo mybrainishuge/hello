@@ -10,7 +10,6 @@ export class SignupService {
 
   private url: string = envVars.url + 'users';
 
-  
   constructor(private http: Http) { }
 
   saveUser(data: any): Observable<Response> {

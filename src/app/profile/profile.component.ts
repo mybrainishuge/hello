@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService} from '../auth.service'
+import { AuthService} from '../auth.service';
 import { AppState } from '../app.service';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { envVars } from '../env';

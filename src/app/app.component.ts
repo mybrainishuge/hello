@@ -80,7 +80,7 @@ export class App {
     let state = this.appState._state;
     this.router.navigate(['/welcome']);
     window.history.pushState(state, null, '/');
-    this.ws.set('landing', 'login');
+    // this.ws.set('landing', 'login');
     //this.ws.changeView('signup');
   }
 

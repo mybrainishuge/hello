@@ -11,7 +11,7 @@ export class LoginService {
 
   public email: string;
   public url: string = envVars.url + 'access_tokens';
- 
+
   login(data: any): Observable<Response> {
     console.log(this.url);
     let body = JSON.stringify({
