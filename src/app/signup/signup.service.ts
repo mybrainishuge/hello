@@ -31,7 +31,7 @@ export class SignupService {
 
   private handleError(error: any) {
     let errBody = JSON.parse(error._body);
-    let errMsg = errBody.meta.error.message
+    let errMsg = errBody.meta.error.message;
     return Observable.throw(errMsg);
   }
 

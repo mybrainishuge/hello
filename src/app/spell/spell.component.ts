@@ -8,22 +8,13 @@ import { AuthService} from '../auth.service';
   selector: 'spell',
   template: require('./spell.component.html'),
   styles: [require('./spell.component.css')],
-  providers: [ AppState, WordsService, LetterCheckingService ],
+  providers: [ AppState, WordsService, LetterCheckingService ]
 })
 
 export class Spell implements OnInit {
-  leapCtrl;
-
-  constructor(
-    private appState: AppState,
-    private wordsService: WordsService,
-    private letterCheckingService: LetterCheckingService,
-    private authService: AuthService ) {
-  }
-
-  private spellingWord:string = '';
-  private showWord:boolean = false;
-  private showSkip:boolean = false;
+  private spellingWord: string = '';
+  private showWord: boolean = false;
+  private showSkip: boolean = false;
   private skippedWords = [];
   private capturedLetter: string = '';
   private capturedLetterColor: string = '';
@@ -34,6 +25,14 @@ export class Spell implements OnInit {
   private correctWords = [];
   private checkLetterTimer;
   private showSkipTimer;
+
+  constructor(
+    private appState: AppState,
+    private wordsService: WordsService,
+    private letterCheckingService: LetterCheckingService,
+    private authService: AuthService ) {
+  }
+
 
   ngOnInit() {
     this.authService.authenticate('spell');
@@ -46,7 +45,7 @@ export class Spell implements OnInit {
     this.nextLetterIndex = 0;
     this.nextLetter = '';
     this.wordPercent = 0;
-    this.spellingWord && this.skippedWords.push(this.spellingWord);
+    if (this.spellingWord) this.skippedWords.push(this.spellingWord);
     this.spellingWord = this.wordsService.returnRandomWord();
     this.nextLetter = this.spellingWord[this.nextLetterIndex].toLowerCase();
     setTimeout(() => {

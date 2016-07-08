@@ -78,12 +78,12 @@ export class AppState {
   }
 
   _initLeapController(deviceStopped_CB, deviceStreaming_CB) {
-    var Leap = require('leapjs');
+    let Leap = require('leapjs');
     require('./lib/leap-plugins.js');
     require('./lib/riggedHand.js');
-    var controller = new Leap.Controller();
+    let controller = new Leap.Controller();
 
-    //connect ctrl at the end of logic
+    // connect ctrl at the end of logic
     controller.use('riggedHand');
     controller.on('deviceStopped', deviceStopped_CB);
     controller.on('deviceStreaming', deviceStreaming_CB);

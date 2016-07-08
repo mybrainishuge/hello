@@ -4,7 +4,14 @@ import { Injectable } from '@angular/core';
 
 export class WordsService {
 
-  private words = ['Loud', 'Would', 'Seed', 'Feed', 'Fade', 'Leaf', 'Deal', 'Seal', 'Bulb', 'Loaf', 'Bowl', 'Soul', 'Loose', 'Fuse', 'Sold', 'Face', 'Safe'];
+  private words = [
+    'Loud', 'Would', 'Seed',
+    'Feed', 'Fade', 'Leaf',
+    'Deal', 'Seal', 'Bulb',
+    'Loaf', 'Bowl', 'Soul',
+    'Loose', 'Fuse', 'Sold',
+    'Face', 'Safe'
+  ];
   // a,b,c,d,e,f,(gh),l,o,s,u,w.
   private used = [];
 

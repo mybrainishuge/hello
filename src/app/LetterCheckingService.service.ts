@@ -4,18 +4,21 @@ import { AppState } from './app.service';
 @Injectable()
 export class LetterCheckingService {
 
-  private letters = ['a', 'b', 'c', 'd', 'e', 'f', 'l', 'o', 's', 'u', 'w'];
+  public controller = this.appState._initLeapController(
+    this.deviceStopped_CB.bind(this),
+    this.deviceStreaming_CB.bind(this)
+  );
+  public target: string = '';
+  public isLetter: boolean;
+  public connected = false;
+  public letter: string = '';
+  private letters: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'l', 'o', 's', 'u', 'w'];
   private url: string = '';
-  public letter = '';
   private results = [];
-  public controller = this.appState._initLeapController(this.deviceStopped_CB.bind(this), this.deviceStreaming_CB.bind(this));
   private _ = require('underscore');
-  public target = '';
-  public isLetter:boolean;
 
   constructor(private appState: AppState) { }
 
-  connected = false;
   deviceStopped_CB() {
     this.connected = false;
   }

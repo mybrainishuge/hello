@@ -33,7 +33,7 @@ export class Profile {
 
   submitEmail(email1, email2) {
     // console.log('submitState', value);
-    //get the user id
+    // get the user id
 
     this.localState.email1 = email1;
     this.localState.email2 = email2;
@@ -45,8 +45,8 @@ export class Profile {
         this.localState.userId = r[0].id;
       }).catch(error => console.log(error));
 
-      //left off here --- need to add the url plus id to make the put
-     // let putUrl = this.url +
+      // left off here --- need to add the url plus id to make the put
+      // let putUrl = this.url +
 
     } else {
       alert('Both fields must match.');

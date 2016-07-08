@@ -1,9 +1,9 @@
-var _ = require('underscore');
+const _ = require('underscore');
 
 import { Component, OnInit } from '@angular/core';
 import { LeapTrainerService } from './services/leapTrainer.service';
 import { AppState } from '../app.service';
-import { AuthService} from '../auth.service'
+import { AuthService} from '../auth.service';
 import { CreatePageState } from './createPageState.service';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -35,29 +35,27 @@ export class Create implements OnInit {
   }
 
   ngOnDestroy() {
-    // console.log('disconnecting leap controller ')
     this.leapTrainerService.trainerCtrl.disconnect();
   }
 
   ngAfterViewInit() {
-    // var event = new Event('ltContainerAdded');
     document.dispatchEvent(new Event('ltContainerAdded'));
   }
 
   setActiveGesture(gestureName) {
-    return this.state.selectedGesture === gestureName ? 'primary' : null;
+    return this.state.selectedGesture === gestureName ? 'primary' : undefined;
   }
 
   recordGesture(gestureName) {
-    //stop listening for gesture matching
+    // stop listening for gesture matching
     this.leapTrainerService.trainer.listening = false;
-    //initialize Recording trainer
+    // initialize Recording trainer
     this.leapTrainerService._initLeapTrainerRecord();
     if (gestureName) {
       // console.log(gestureName);
       this.leapTrainerService.trainer.create(gestureName.toUpperCase());
     }
-    //TODO: implement UI/X message for no input
+    // TODO: implement UI/X message for no input
   }
 
   stopRecording(gestureName) {
@@ -85,7 +83,7 @@ export class Create implements OnInit {
 
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
-    //TODO: handle UI for success and error responses
+    // TODO: handle UI for success and error responses
     this.http.post(url, body, options)
     .forEach(r => {
       console.log('response back: ', r);
@@ -117,7 +115,6 @@ export class Create implements OnInit {
     //display options for : ['Test', ...options]
 
     // this.createPageState.set('displayGestureOptions', !bool);
-
   }
 
 
@@ -136,7 +133,7 @@ export class Create implements OnInit {
     //-- allows the 'training complete' event to fire when expected (default is after 3 samples saved)
     this.leapTrainerService.trainer.trainingGestures = 1;
     this.leapTrainerService.trainer.updateTrainingData(gestureName, gesture);
-    // //TODO: handle UI message for currently made gesture to be updated to saved DB -- improves ML
+    // TODO: handle UI message for currently made gesture to be updated to saved DB -- improves ML
   }
 
   reset(gestureName) {

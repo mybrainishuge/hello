@@ -25,33 +25,39 @@ export class Learn implements OnInit {
   private mastered = [];
   private gestureNames: string[] = [];
   private gColor = {};
+  private clickedGesture: string = '';
+  private gestureCtrlConnected: boolean = false;
+  private GestureRecCtrl;
+  private trainer;
+  private LeapTrainer = require('../lib/leap-trainer.js');
+  private connected: boolean = false;
   private letters = [
-    {val: 'A', color:'primary', count: 0},
-    {val: 'B', color:'primary', count: 0},
-    {val: 'C', color:'primary', count: 0},
-    {val: 'D', color:'primary', count: 0},
-    {val: 'E', color:'primary', count: 0},
-    {val: 'F', color:'primary', count: 0},
-    {val: 'G', color:'primary', count: 0},
-    {val: 'H', color:'primary', count: 0},
-    {val: 'I', color:'primary', count: 0},
-    {val: 'J', color:'primary', count: 0},
-    {val: 'K', color:'primary', count: 0},
-    {val: 'L', color:'primary', count: 0},
-    {val: 'M', color:'primary', count: 0},
-    {val: 'N', color:'primary', count: 0},
-    {val: 'O', color:'primary', count: 0},
-    {val: 'P', color:'primary', count: 0},
-    {val: 'Q', color:'primary', count: 0},
-    {val: 'R', color:'primary', count: 0},
-    {val: 'S', color:'primary', count: 0},
-    {val: 'T', color:'primary', count: 0},
-    {val: 'U', color:'primary', count: 0},
-    {val: 'V', color:'primary', count: 0},
-    {val: 'W', color:'primary', count: 0},
-    {val: 'X', color:'primary', count: 0},
-    {val: 'Y', color:'primary', count: 0},
-    {val: 'Z', color:'primary', count: 0}
+    {val: 'A', color: 'primary', count: 0},
+    {val: 'B', color: 'primary', count: 0},
+    {val: 'C', color: 'primary', count: 0},
+    {val: 'D', color: 'primary', count: 0},
+    {val: 'E', color: 'primary', count: 0},
+    {val: 'F', color: 'primary', count: 0},
+    {val: 'G', color: 'primary', count: 0},
+    {val: 'H', color: 'primary', count: 0},
+    {val: 'I', color: 'primary', count: 0},
+    {val: 'J', color: 'primary', count: 0},
+    {val: 'K', color: 'primary', count: 0},
+    {val: 'L', color: 'primary', count: 0},
+    {val: 'M', color: 'primary', count: 0},
+    {val: 'N', color: 'primary', count: 0},
+    {val: 'O', color: 'primary', count: 0},
+    {val: 'P', color: 'primary', count: 0},
+    {val: 'Q', color: 'primary', count: 0},
+    {val: 'R', color: 'primary', count: 0},
+    {val: 'S', color: 'primary', count: 0},
+    {val: 'T', color: 'primary', count: 0},
+    {val: 'U', color: 'primary', count: 0},
+    {val: 'V', color: 'primary', count: 0},
+    {val: 'W', color: 'primary', count: 0},
+    {val: 'X', color: 'primary', count: 0},
+    {val: 'Y', color: 'primary', count: 0},
+    {val: 'Z', color: 'primary', count: 0}
   ];
 
   constructor(
@@ -61,22 +67,22 @@ export class Learn implements OnInit {
     private letterCheckingService: LetterCheckingService) {
 
     this.appState.retreiveGestures().subscribe(result => {
-      var gest = {}
-      for (var name in result) {
+      let gest = {};
+      for (let name in result) {
         gest[name] = result[name];
       }
       let names = [];
-      for (var n in gest) {
+      for (let n in gest) {
         names.push(n);
       }
       this.gestureNames = names;
       this.localState.gestures = gest;
       this.gestureNames.forEach(name => {
-        this.gColor[name] = 'primary'
+        this.gColor[name] = 'primary';
       });
     });
 
-  //  this.mastered = JSON.parse(sessionStorage.getItem('mastered')) || [];
+  // this.mastered = JSON.parse(sessionStorage.getItem('mastered')) || [];
 
   }
 
@@ -148,7 +154,7 @@ export class Learn implements OnInit {
     if (letter.count > 1) {
       this.mastered.push(letter.val);
     }
-//    sessionStorage.setItem('mastered', JSON.stringify(this.mastered));
+  // sessionStorage.setItem('mastered', JSON.stringify(this.mastered));
   }
 
 
@@ -169,36 +175,32 @@ export class Learn implements OnInit {
     this.checkLetter();
   }
 
-   //logic for gesture recognition below
-  private clickedGesture = '';
+   // logic for gesture recognition below
   startGestureRecognition(gestureName) {
     this.showRecFinalMessage = false;
     this.ltrChecked = false;
     this.clickedLtr = '';
     this.riggedHand = false;
-    //disconnect ltrCtrl
+    // disconnect ltrCtrl
     this.letterCheckingService.controller.disconnect();
     this.ltrCtrlConnected = false;
-    //TODO: playback plugin...
-      //.....
-     // this.GestureRecCtrl.use('playback');
-     //  document.getElementById('connect-leap').remove();
-     console.log('this is gesturename', gestureName);
+    // TODO: playback plugin...
+    // .....
+    // this.GestureRecCtrl.use('playback');
+    //  document.getElementById('connect-leap').remove();
+    console.log('this is gesturename', gestureName);
     this.clickedGesture = gestureName;
   }
 
   showRiggedHandGest() {
     this.riggedHand = true;
-
     this.initGCtrl();
-
     setTimeout(function() {
       document.dispatchEvent(new Event('ltContainerAdded'));
     }, 0);
 
   }
 
-  private gestureCtrlConnected = false;
   initGCtrl() {
     if (!this.gestureCtrlConnected) {
       this._initGestureRecognition();
@@ -207,10 +209,6 @@ export class Learn implements OnInit {
     this.trainer.listening = true;
   }
 
-  private GestureRecCtrl;
-  private trainer;
-  private LeapTrainer = require('../lib/leap-trainer.js');
-  private connected = false;
    deviceStopped_CB() {
       // console.log('device has stopped streaming');
       this.connected = false;
@@ -224,12 +222,15 @@ export class Learn implements OnInit {
     }
 
   _initGestureRecognition() {
-    this.GestureRecCtrl = this.appState._initLeapController(this.deviceStopped_CB.bind(this), this.deviceStreaming_CB.bind(this));
+    this.GestureRecCtrl = this.appState._initLeapController(
+      this.deviceStopped_CB.bind(this),
+      this.deviceStreaming_CB.bind(this)
+    );
     this.GestureRecCtrl.connect();
     this.GestureRecCtrl.on('disconnect', () => {
       this.trainer.listening = false;
       // console.log('disconnecting g ctrl!!!!!!...');
-    })
+    });
 
     var poses = {};
     this.gestureNames.forEach(name => {
@@ -241,7 +242,7 @@ export class Learn implements OnInit {
       gestures: this.localState.gestures,
       poses: poses,
       listening: true
-    })
+    });
 
     this.trainer.on('gesture-unknown', (allHits, gesture) => {
       /*TODO: check to see what hit percentage is for clicked gesture
@@ -281,8 +282,8 @@ export class Learn implements OnInit {
   recMessageToShow = 'incorrect';
 
   ngOnDestroy() {
-    !!this.letterCheckingService.controller && this.letterCheckingService.controller.disconnect();
+    if (this.letterCheckingService.controller) this.letterCheckingService.controller.disconnect();
     this.letterCheckingService.target = '';
-    !!this.GestureRecCtrl && this.GestureRecCtrl.disconnect();
+    if (this.GestureRecCtrl) this.GestureRecCtrl.disconnect();
   }
 }

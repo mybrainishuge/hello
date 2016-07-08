@@ -7,10 +7,10 @@ import { envVars } from './env';
 
 export class LoginService {
 
-  constructor(private http: Http) { }
-
   public email: string;
   public url: string = envVars.url + 'access_tokens';
+
+  constructor(private http: Http) { }
 
   login(data: any): Observable<Response> {
     console.log(this.url);
@@ -31,7 +31,11 @@ export class LoginService {
   }
 
   private handleError(error: any) {
-    let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    let errMsg = (error.message)
+      ? error.message
+      : error.status
+        ? `${error.status} - ${error.statusText}`
+        : 'Server error';
     console.error(errMsg);
     return Observable.throw(errMsg);
   }

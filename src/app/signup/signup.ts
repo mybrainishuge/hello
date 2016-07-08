@@ -1,4 +1,4 @@
-var _ = require('underscore');
+const _ = require('underscore');
 
 import { Component, OnInit } from '@angular/core';
 import { AppState } from '../app.service';
@@ -31,15 +31,12 @@ export class Signup implements OnInit {
       'email': [],
       'password': [],
       'confirm': []
-    })
+    });
   }
   ngOnInit() { }
 
   onSubmit(form: any) {
     if ( form.password !== form.confirm || !form.password || !form.email) {
-       //do something else here to handle the error
-       //make sure to handle the form fields
-      console.log('no match');
       return;
     }
     this.signupService.saveUser(form)
@@ -51,9 +48,9 @@ export class Signup implements OnInit {
             this.appState.set('authenticated', true);
             this.appState.set('isDisabled', false);
             window.history.state.email = form.email;
-            var temp = this.appState._state;
+            let temp = this.appState._state;
             temp = _.extend(window.history.state, temp);
-            window.history.pushState(temp, null, 'profile')
+            window.history.pushState(temp, undefined, 'profile');
             this.router.navigate(['/profile']);
             // window.history.pushState(this.appState._state, null, 'profile');
           },
@@ -70,5 +67,5 @@ export class Signup implements OnInit {
     let body = res.json();
     return body.data || {};
   }
-  //<a href="http://localhost:8080/auth/google">
+  // <a href="http://localhost:8080/auth/google">
 }

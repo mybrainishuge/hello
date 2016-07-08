@@ -29,9 +29,9 @@ export class WelcomeContent implements OnInit {
   routeToLearn() {
     this.appState.set('learn', true);
     this.appState.set('learnPage', true);
-    var state = this.appState._state;
+    let state = this.appState._state;
     this.router.navigate(['/learn']);
-    window.history.pushState(state, null, 'learn');
+    window.history.pushState(state, undefined, 'learn');
   }
 
 }
