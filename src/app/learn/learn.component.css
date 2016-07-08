@@ -1,0 +1,155 @@
+md-toolbar {
+  border-radius: 4px 4px 0 0;
+}
+
+.head-center {
+  text-align: center;
+}
+
+.alphabet-container {
+  float: left;
+  position: relative;
+  width: 320px;
+  height: 65vh;
+  min-height: 428px;
+  margin-left: 3%;
+  /*border: 1px solid black;*/
+  border-radius: 4px;
+  /*background-color: rgba(1, 150, 136, 0.19);*/
+}
+
+.letters {
+  margin: auto;
+  margin-top: 19px;
+  width: 282px;
+  height: 380px;
+}
+
+.letter-buttons, .gestureNames {
+  float: left;
+  margin: 3px;
+}
+
+.gestures {
+  margin: auto;
+  margin-top: 19px;
+  width: 282px;
+  height: 380px;
+}
+
+.graphic-container {
+  float: left;
+  width: 62vw;
+  height: 65vh;
+  margin-left: 3%;
+  margin-right: 3%;
+  /*border: 1px solid;*/
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.87);
+  box-shadow: inset 0px 0px 50px 0px rgba(0,0,0,0.75);
+}
+
+.hand-container {
+  position:fixed;
+  bottom:0px;
+  width:100%;
+}
+
+.hand-image {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hand-btn {
+  color: white;
+  width: 44%;
+  max-width: 350px;
+}
+
+#ltMainContainer {
+  /*float: left;*/
+  /*position: relative;*/
+  width: 100%;
+  height: 100%;
+  /*margin-left: 3%;*/
+  /*margin-right: 3%;*/
+  /*border: 1px solid black;*/
+  /*border-radius: 3px;*/
+  /*background-color: rgba(0, 0, 0, 0.87);*/
+  /*box-shadow: inset 0px 0px 50px 0px rgba(0,0,0,0.75);*/
+}
+
+canvas {
+  pointer-events: none;
+}
+
+#deviceStatus {
+  color: grey;
+  position: absolute;
+  bottom: 0;
+  margin-left: 3px;
+}
+#playbackStatus {
+  float: left;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#start-timer {
+  color: white;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  position: relative;
+  top: 0;
+  -webkit-animation-duration: 3s;
+  -o-animation-duration: 3s;
+  animation-duration: 3s;
+  font-size: 20px;
+}
+
+
+/*
+#createOptions {
+  float: left;
+  position: relative;
+  width: 30vw;
+  height: 65vh;
+  margin-left: 3%;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+#createOptionsList {
+  padding: 3%;
+  margin: 0;
+  text-align: center;
+}
+
+#createOptionsList li {
+  list-style-type: none
+}
+
+#createOptionsList md-input {
+  width: 90%;
+}
+
+li > button {
+  width: 90%;
+  max-width: 350px;
+}
+
+#recognizedGesture, #gestureOptions {
+  background-color: blue;
+  color: white;
+  text-align: center;
+}
+
+#gestureOptions {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}*/

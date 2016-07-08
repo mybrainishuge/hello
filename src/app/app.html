@@ -1,0 +1,28 @@
+<!-- nav bar should get rendered here if the user is authenticated-->
+
+<md-toolbar color="primary" class="animated fadeInDown" *ngIf="authenticated || learnPage">
+  <span *ngIf="authenticated" class="animated fadeInLeft">hello, {{name.split('@')[0]}}</span>
+  <span class="fill"></span>
+  <div *ngFor="let page of navOptions">
+  <button md-button router-active class='animated fadeInUp' [disabled]="isDisabled" (click)="navToPage(page)">{{page}}</button>
+  </div>
+  <span class="fill"></span>
+  <button md-button router-active *ngIf="authenticated" (click)="authService.logout()" class="animated fadeInRight">
+    Log Out
+  </button>
+  <button md-button router-active *ngIf="!authenticated" (click)="routeToWelcome()" class="animated fadeInRight">
+    Log In
+  </button>
+
+</md-toolbar>
+
+<router-outlet></router-outlet>
+
+<!-- <welcome *ngIf="!appState._state.authenticated"></welcome>
+
+  <footer  *ngIf="appState.authenticated && appState.learn" >
+    <img [src]="digitalkLogo" width="6%">
+    <span id="footerText">hello by <a [href]="url">@digi-talk</a></span>
+  </footer>
+</md-content>
+ -->

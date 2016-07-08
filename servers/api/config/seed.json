@@ -1,0 +1,17 @@
+{
+
+  "development": {
+    "User": [
+      {"email": "demo@signhello.us", "password": "signhello", "authFlag":"local"}
+    ]
+  },
+
+  "test": {},
+
+  "production": {
+    "User": [
+      {"email": "demo@signhello.us", "password": "signhello", "authFlag":"local"}
+    ]
+  }
+
+}

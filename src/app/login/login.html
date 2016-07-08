@@ -1,0 +1,20 @@
+<div id="main-container" *ngIf="!appState.authenticated">
+  <div class="form-container" [ngFormModel]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+    <div>
+      <h1>Login....</h1><h4 class='alt'><button class="login-title" (click)="ws.changeView('signup') ">Go to sign up</button></h4>
+    </div>
+    <form>
+      <input type="email" name="email" placeholder="EMAIL" [ngFormControl]="myForm.controls['email']">
+      <br>
+      <input type="password" name="password" placeholder="PASSWORD" [ngFormControl]="myForm.controls['password']">
+      <div>
+        <input type="submit" value="LOGIN" class="signup">
+        <button type="button" class="cancel" (click)="ws.changeView('welcome')">
+          CANCEL
+        </button>
+      </div>
+    </form>
+  </div>
+  <!-- /form-container -->
+</div>
+<!-- /main-container -->

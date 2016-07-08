@@ -1,0 +1,85 @@
+.form-container {
+  font-family: 'Maitree', serif;
+  position: relative;
+  top: 100px  ;
+  margin-left: 750px;
+  height: 500px;
+  width: 500px;
+  color: #fff;
+}
+
+h1, h4 {
+  color: #F4A846;
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.alt{
+  margin-left: 128px;
+}
+
+input {
+  margin: 10px;
+  text-align: center;
+  /*text-transform: uppercase;*/
+  width: 350px;
+  height: 50px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid #F4A846;
+  border-radius: 5px;
+}
+
+input.signup {
+  margin-left: 35px;
+  margin-top:40px;
+  width: 150px;
+}
+
+button {
+  /*text-transform: uppercase;*/
+  width: 150px;
+  height: 50px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid #F4A846;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #F4A846;
+  color: black;
+  font-weight: bold;
+}
+
+.signup:hover {
+  background-color: #F4A846;
+  color: black;
+  font-weight: bold;
+}
+
+button.login {
+  text-transform: none;
+  height: 0;
+  width: 0;
+  border-radius: 0;
+  border: 0;
+  margin-bottom: 0;
+  color: #F4A846;
+}
+
+/*.googleSignIn {
+  margin: 10px;
+  width: 350px;
+}*/
+
+.login-title {
+  color: #F4A846;
+  border: none;
+  width: 112px;
+}
+
+/*.login-title:hover {
+  background: transparent;
+  color: #fff;
+}*/

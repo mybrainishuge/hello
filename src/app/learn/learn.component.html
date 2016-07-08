@@ -1,0 +1,82 @@
+<div class="animated fadeIn">
+  <div class="head-center">
+    <h1 class="animated fadeInDown">Learn</h1>
+    <p class="animated pulse">Expand your knowledge of American Sign Language using flash cards or a Leap Motion device.</p>
+  </div>
+
+  <md-tab-group class="alphabet-container animated pulse">
+    <md-tab>
+      <template md-tab-label>Alphabet</template>
+      <template md-tab-content>
+        <div class="letters">
+          <button md-raised-button *ngFor="let letter of letters" class="letter-buttons animated zoomIn" color="{{letter.color}}" (click)="clicked(letter.val)">{{letter.val}}</button>
+        </div>
+      </template>
+    </md-tab>
+    <md-tab>
+      <template md-tab-label>Gestures</template>
+      <template md-tab-content>
+        <div class="gestures">
+          <button md-raised-button *ngFor="let gestureName of gestureNames" class="letter-buttons animated zoomIn jello" color="{{gColor[gestureName]}}" (click)='startGestureRecognition(gestureName)'>{{gestureName}}!</button>
+        </div>
+      </template>
+    </md-tab>
+  </md-tab-group>
+
+  <div class="graphic-container animated fadeInRight">
+    <div *ngIf="!riggedHand">
+      <md-toolbar color="primary">
+        <span class="fill"></span>
+        <span *ngIf="!clickedLtr " class="hand-btn animated bounce">
+          Click a letter or gesture to view it
+        </span>
+        <button *ngIf="clickedLtr" md-raised-button color="warn" class="hand-btn animated bounceIn" (click)="clickedLtr = ''">
+          Hide the image
+        </button>
+        <span *ngIf="clickedLtr" class="fill"></span>
+        <button *ngIf="clickedLtr" md-raised-button color="warn" class="hand-btn animated bounceIn" (click)="showRiggedHandLtr()">
+          Try it with Leap Motion
+        </button>
+        <button *ngIf="clickedGesture" md-raised-button color="warn" class="hand-btn animated bounceIn" (click)="showRiggedHandGest()">
+          Try it with Leap Motion
+        </button>
+        <span class="fill"></span>
+      </md-toolbar>
+
+      <div *ngIf="clickedLtr" class="hand-container animated fadeIn">
+        <img class="hand-image" [src]="imageUrl"/>
+      </div>
+    </div>
+
+    <div *ngIf="riggedHand" id="ltMainContainer">
+      <md-toolbar color="primary">
+        <span class="fill"></span>
+        <span *ngIf='clickedLtr && !ltrChecked' class="animated flipInY">
+          Try signing the letter {{clickedLtr.toUpperCase()}}
+        </span>
+        <button *ngIf='ltrChecked' md-raised-button color="warn" class="hand-btn animated bounceIn" (click)='retryLtr()'> Try again</button>
+        <span *ngIf='clickedGesture' class="hand-btn animated flipInY">
+          <div *ngIf='!showRecFinalMessage'>Try signing the gesture {{clickedGesture.toUpperCase()}}</div>
+          <div *ngIf='showRecFinalMessage' id='recognizedFinalMessage' [ngSwitch]='recMessageToShow'>
+          <div *ngSwitchWhen='"incorrect"' [ngStyle]='{"text-align":"center"}'>That's not correct</div>
+          <div *ngSwitchWhen='"correct"' [ngStyle]='{"text-align":"center"}'>Nice! You got it</div>
+        </div>
+        </span>
+        <span class="fill"></span>
+      </md-toolbar>
+      <div id="ltContainer">
+        <div id="start-timer" class='animated flash' *ngIf="startTimer">Checking in &nbsp; {{ sec }} seconds</div>
+        <div id="recognizedGesture"></div>
+      <div id='deviceStatus'> Leap Motion Device Status :
+        <span [ngSwitch]="letterCheckingService.connected || connected">
+          <span *ngSwitchWhen='true' [ngStyle]='{"color":"green"}'>Connected</span>
+          <span *ngSwitchWhen='false' [ngStyle]='{"color":"red"}'>Disconnected</span>
+        </span>
+      </div>
+    </div>
+      </div>
+      <div id='playbackStatus' [ngStyle]='{"color":"grey"}'> Playback Disabled. Please check your Leap settings</div>
+  </div>
+
+</div>
+

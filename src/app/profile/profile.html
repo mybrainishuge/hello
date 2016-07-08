@@ -1,0 +1,69 @@
+<div class="head-center animated fadeIn">
+  <h1 class="animated fadeInDown">Profile</h1>
+  <p class="animated pulse">Update your email and password.</p>
+</div>
+
+<div class="card-container animated fadeIn">
+  <md-card>
+    <md-card-title>Update Email</md-card-title>
+    <md-card-content>
+
+      <form (ngSubmit)="updateEmail(localState.email1, localState.email2)" autocomplete="off">
+        <md-input type="email"
+          placeholder="Enter email address"
+          [value]="localState.email1"
+          (input)="localState.email1 = $event.target.value"
+          autofocus>
+        </md-input>
+        <md-input type="email"
+          placeholder="Re-enter email address"
+          [value]="localState.email2"
+          (input)="localState.email2 = $event.target.value"
+          autofocus>
+        </md-input>
+        <button md-raised-button color="primary">Submit</button>
+      </form>
+
+<!--       <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
+      Rather than wiring up two-way data-binding ourselves with [value] and (input)
+      we can use Angular's [(ngModel)] syntax
+      <input type="text" [(ngModel)]="localState.value" autofocus> -->
+
+
+    <!-- <pre>this.localState = {{ localState | json }}</pre> -->
+
+    </md-card-content>
+  </md-card>
+
+  <!-- <md-card class="animated fadeInUp"> -->
+  <md-card>
+    <md-card-title>Update Password</md-card-title>
+    <md-card-content>
+
+      <form (ngSubmit)="updatePassword(localState.password1, localState.password2)" autocomplete="off">
+        <md-input type="password"
+          placeholder="Enter old password"
+          [value]="localState.password1"
+          (input)="localState.password1 = $event.target.value"
+          autofocus>
+        </md-input>
+        <br>
+        <md-input type="password"
+          placeholder="Enter new password"
+          [value]="localState.password1"
+          (input)="localState.password1 = $event.target.value"
+          autofocus>
+        </md-input>
+        <md-input type="password"
+          placeholder="Re-enter new password"
+          [value]="localState.password2"
+          (input)="localState.password2 = $event.target.value"
+          autofocus>
+        </md-input>
+        <button md-raised-button color="primary">Submit</button>
+      </form>
+
+    </md-card-content>
+  </md-card>
+
+</div>

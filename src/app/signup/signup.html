@@ -1,0 +1,24 @@
+<div id="main-container">
+  <div class="form-container">
+    <div>
+      <h1>Sign up....</h1><h4 class="alt"><button class="login-title" (click)="ws.changeView('login')">Go to Login</button></h4>
+    </div>
+    <form [ngFormModel]="signupForm" (ngSubmit)="onSubmit(signupForm.value)">
+      <input type="email" name="email" placeholder="EMAIL" [ngFormControl]="signupForm.controls['email']">
+      <br>
+      <input type="password" name="password" placeholder="PASSWORD" [ngFormControl]="signupForm.controls['password']">
+      <br>
+      <input type="password" name="confirm" placeholder="CONFIRM PASSWORD" [ngFormControl]="signupForm.controls['confirm']">
+      <br>
+      <div class="button">
+        <input type="submit" value="SIGN UP" class="signup">
+        <button type="button" class="cancel" (click)="ws.changeView('welcome')">
+          CANCEL
+        </button>
+      </div>
+    </form>
+    <!-- <button class="googleSignIn"><a href='http://localhost:8080/auth/google'>Sign In with Google</a></button> -->
+  </div>
+  <!-- /form-container -->
+</div>
+<!-- /main-container -->

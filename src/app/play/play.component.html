@@ -1,0 +1,32 @@
+<div class="animated fadeIn">
+  <div class="head-center">
+    <h1 class="animated fadeInDown">Playground</h1>
+    <p class="animated pulse">Connect your Leap Motion device and practice what you've learned with composition.</p>
+  </div>
+</div>
+
+<div id="ltMainContainer" class="animated fadeInLeft">
+  <div id="ltContainer">
+    <div id="deviceStatus"> Leap Motion Device Status :
+      <span [ngSwitch]="letterCheckingService.connected">
+        <span *ngSwitchWhen='true' [ngStyle]='{"color":"green"}'>Connected</span>
+        <span *ngSwitchWhen='false' [ngStyle]='{"color":"red"}'>Disconnected</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div id="composeOutput" class="animated fadeInUp">
+  <!-- <div *ngIf="results.length" id="header"> Results </div> -->
+
+  <md-toolbar color="primary" class="animated bounceInDown">
+    <span class="fill"></span>
+      Composition View
+    <span class="fill"></span>
+  </md-toolbar>
+
+  <div id="output-container" *ngFor="let result of results">
+    <!-- <button md-button id="result" color="primary"> {{ result }} </button> -->
+    <div class="animated bounceInUp">{{result}}</div>
+  </div>
+</div>

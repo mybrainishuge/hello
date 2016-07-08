@@ -1,0 +1,102 @@
+.container {
+  /*float: left;*/
+  /*margin-right: 10%;*/
+  /*margin-left: 10%;*/
+  margin: 0 auto;
+  width: 870px;
+  height: 490px;
+  overflow: hidden;
+  padding: 25px;
+  /*border: 1px solid;*/
+}
+
+.head-center {
+  text-align: center;
+}
+
+.alphabet-container {
+  float: left;
+  position: relative;
+  /*width: 380px;*/
+  /*height: 350px;*/
+  width: 30vw;
+  height: 65vh;
+  border: 0.2px solid;
+  padding: 20px;
+  margin-left: 3%;
+  border-radius: 3px;
+  /*margin-right: 25px;*/
+  border-color: #b3b3b3 ;
+  background-color: white;
+}
+
+.image-container {
+  float: left;
+  width: 380px;
+  height: 350px;
+  border: 0.2px solid;
+  border-color: #b3b3b3 ;
+  background-color: white;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.capture {
+  float: left;
+  width: 500px;
+  height: 500px;
+  margin-left: 70px;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.capture-container {
+  width: 380px;
+  height: 350px;
+  border: 0.2px solid;
+  border-color: #b3b3b3 ;
+  background-color: #e6e6e6 ;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-display {
+  margin: 0;
+  bottom: 0px;
+  position: absolute;
+}
+
+.button-container {
+  float: left;
+  overflow: hidden;
+}
+
+.capture-button {
+  right: 10px;
+  margin-top: 10px;
+  position: absolute;
+}
+
+.score-container {
+  height: 30px;
+  width: 840px;
+  top: 620px;
+  background-color: white;
+  position: absolute;
+  padding: 20px;
+}
+
+.score {
+  text-align: center;
+  font-size: 18px;
+}
+
+.alphabet-button {
+  padding: 3px;
+  float: left;
+  position: relative;
+}

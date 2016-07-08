@@ -1,0 +1,75 @@
+<div class="animated fadeIn">
+  <div class="head-center">
+    <h1 class="animated fadeInDown">Spelling</h1>
+    <p class="animated pulse">Connect your Leap Motion device and start spelling words.</p>
+  </div>
+</div>
+
+<div id="spellPanel" class="animated zoomIn">
+  <!-- <div id="word" *ngIf="showWord" class="animated tada">
+    {{spellingWord}}
+  </div> -->
+
+  <md-toolbar color="primary" *ngIf="showWord" class="animated bounceInDown">
+    <span class="fill"></span>
+    {{spellingWord}}
+    <span class="fill"></span>
+  </md-toolbar>
+
+  <div *ngIf="showSkip" id="button" class="animated fadeIn">
+    <button md-raised-button color="warn" class="animated pulse" (click)="nextWord()">Skip</button>
+  </div>
+
+  <div id="skipped-container">
+    <div id="skippedWords" *ngIf="skippedWords.length" *ngFor="let word of skippedWords" class="animated fadeInDown">
+      <button md-button color = "primary" (click)="skippedClick($event)">{{word}}</button>
+    </div>
+  </div>
+</div>
+
+<div class="animated fadeIn">
+  <div id="ltMainContainer" class="animated pulse">
+    <div id="ltContainer">
+      <!-- <div id="recognizedLetter" *ngIf="capturedLetter" color="capturedLetterColor">
+        {{capturedLetter}}
+      </div> -->
+
+      <md-toolbar color="primary" *ngIf="capturedLetter" class="animated fadeIn">
+        <span class="fill"></span>
+        {{capturedLetter.toUpperCase()}}
+        <span class="fill"></span>
+      </md-toolbar>
+
+      <div id="deviceStatus"> Leap Motion Device Status :
+      <span [ngSwitch]="letterCheckingService.connected">
+        <span *ngSwitchWhen='true' [ngStyle]='{"color":"green"}'>Connected</span>
+        <span *ngSwitchWhen='false' [ngStyle]='{"color":"red"}'>Disconnected</span>
+      </span>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div id="spellPanel" class="animated zoomIn">
+  <div id="right-top">
+    <!-- <div id="right-panel-word" *ngIf="rightPanelWord.length">
+      {{rightPanelWord}}
+    </div> -->
+
+    <md-toolbar color="primary" *ngIf="rightPanelWord.length" class="animated tada">
+      <span class="fill"></span>
+      {{rightPanelWord}}
+      <span class="fill"></span>
+    </md-toolbar>
+
+    <div *ngIf="rightPanelWord.length" id="progress-bar">
+      <md-progress-circle mode="determinate" class="animated pulse" [value]="wordPercent"></md-progress-circle>
+    </div>
+  </div>
+  <div id="correct-container">
+    <div id="correct-words" *ngIf="correctWords.length" *ngFor="let word of correctWords">
+      <button md-button color="primary" class="animated flip" (click)="correctClick($event)">{{word}}</button>
+    </div>
+  </div>
+</div>
+

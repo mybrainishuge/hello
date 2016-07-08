@@ -1,0 +1,63 @@
+<div class="">
+  <div class="head-center">
+    <h1 class="animated fadeInDown">Learn</h1>
+    <p class="animated pulse">Expand your knowledge of American Sign Language.</p>
+  </div>
+
+  <!-- <div class="container animated fadeIn"> -->
+    <md-tab-group class="alphabet-container animated pulse">
+      <md-tab>
+        <template md-tab-label>Alphabet</template>
+        <template md-tab-content>
+          <div class="button-container">
+            <div class="alphabet-button animated zoomIn" *ngFor="let ltr of letters" >
+              <button md-raised-button color="{{ltr.color}}" (click) = "clicked(ltr.val)"> {{ltr.val}}</button>
+            </div>
+          </div>
+        </template>
+      </md-tab>
+      <md-tab>
+        <template md-tab-label>Gestures</template>
+        <template md-tab-content></template>
+      </md-tab>
+    </md-tab-group>
+  <!-- </div> -->
+
+<!--   <div id="ltMainContainer" class="animated fadeInRight">
+    <div id="ltContainer">
+      <div id="recognizedGesture">{{state.recognizedGesture}}</div>
+    </div>
+    <div *ngIf="state.trainingComplete" id="gestureOptions">
+      <button md-raised-button color="primary" (click)="update(state.gestureName)">Update</button>
+      <button md-raised-button color="primary" (click)="reset()">Reset</button>
+      <button md-raised-button color="primary" (click)="saveGesture()">Save</button>
+    </div>
+  </div> -->
+
+
+
+  <div>
+    <!-- <div *ngIf="showImgDiv" class="image-container"> -->
+    <div class="image-container">
+      <div class="capture-button">
+        <button md-button color="primary" (click) = "hideImgDiv();"> Click when READY </button>
+      </div>
+      <div *ngIf="clickedLtr" class="image-display">
+        <img [src] = "imageUrl"/>
+      </div>
+    </div>
+
+    <div *ngIf="showCaptureDiv" class="capture">
+      <div class="capture-container">
+      <button md-button color="primary" (click) = "hideCaptureDiv()"> DONE </button>
+      </div>
+    </div>
+
+    <div *ngIf="mastered.length" class='score-container'>
+      <div class = 'score'>
+        You have mastered : {{ mastered }}
+      </div>
+    </div>
+
+  </div>
+</div>

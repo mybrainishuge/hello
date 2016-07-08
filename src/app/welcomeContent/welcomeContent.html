@@ -1,0 +1,33 @@
+<div class="content-container">
+  <h1>hello....</h1>
+  <p>
+    Welcome to Hello.  Hello is an interactive portal dedicated to bridging the gap between the hearing and the hearing impaired.  We believe that communication is the key to helping build a better world.
+  </p>
+  <p>
+    Hello is best experienced when used in conjunction with the Leap Motion hand sensor. We have paired revolutionary hardware with custom developed machine learning and intuitive design to provide our users with the best experience possible.
+  </p>
+  <p>
+    Hello offers two experiences.  For non-members just click the learn button below and jump right in.  Don't have a Leap Motion?  That's OK we have you covered.  Our learn page can still help you learn the ASL alphabet, or you can test yourself on common signs with our 3D playback and flash card system.  If you have a Leap Motion, plug it in and let our machine learning software scan your hands as you sign and provide real-time feedback on how well you are doing.
+
+  </p>
+  <p>
+    For our members, not only do you get all the incredible features non-members get, but you can test your knowledge on our Spell page.  Here you will be given words, and you can use your Leap Motion to spell what you see on screen.  
+  </p>
+  <p>
+    Want to be a part of the community?  Members also get to contribute to our sign dictionary.  Go to the create page and record signs that all Hello members can use to learn.
+  </p>
+  <p>
+    So to everyone who wants to increase communication and break down barriers we welcome you with one simple word...Hello.
+  </p>
+
+</div>
+ <!-- /content -->
+
+<div class="button-container">
+  <button class='signin' (click)="ws.changeView('signup')">
+    Sign in / up
+  </button>
+  <button class='learn' (click)="routeToLearn()">Learn</button>
+</div>
+
+<!--(click)="appState.authenticated = true; appState.isDisabled = true;"  for button learn-->

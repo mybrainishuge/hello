@@ -1,0 +1,84 @@
+/*styles for home content only*/
+.card-container{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    /*border: 2px solid #FBC02D;*/
+    border-radius: 5px;
+    /*box-shadow: 10px 10px 50px 1px rgba(0,0,0,0.75);*/
+    background-color: rgba(1, 150, 136, 0.19);
+}
+.sample-content{
+    flex: 1;
+}
+.card-container md-card{
+    margin: 5px;
+}
+.card-inner-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.form-container {
+  position: relative;
+  font-family: 'Maitree', serif;
+  top: 100px  ;
+  margin-left: 750px;
+  height: 500px;
+  width: 500px;
+  color: #fff;
+}
+h1, h3 {
+  /*color: #F4A846;*/
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.alt{
+  margin-left: 170px;
+}
+
+/*button.login {
+  text-transform: none;
+  height: 0;
+  width: 0;
+  border-radius: 0;
+  border: 0;
+  margin-bottom: 0;
+  color: #F4A846;
+}*/
+input {
+  margin: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 350px;
+  height: 50px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid #F4A846;
+  border-radius: 5px;
+}
+
+input.signup {
+  margin-left: 35px;
+  margin-top:40px;
+  width: 150px;
+}
+
+/*button {
+  text-transform: uppercase;
+  width: 150px;
+  height: 50px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid #F4A846;
+  border-radius: 5px;
+}*/
+
+.md-primary {
+  color: #FBC02D;
+}
+
+.head-center {
+  text-align: center;
+}
