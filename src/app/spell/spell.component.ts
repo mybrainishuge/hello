@@ -32,8 +32,8 @@ export class Spell implements OnInit {
   private rightPanelWord: string = '';
   private wordPercent: number = 0;
   private correctWords = [];
-  checkLetterTimer;
-  showSkipTimer;
+  private checkLetterTimer;
+  private showSkipTimer;
 
   ngOnInit() {
     this.authService.authenticate('spell');

@@ -1,4 +1,4 @@
-var _ = require('underscore');
+const _ = require('underscore');
 
 import { Injectable } from '@angular/core';
 import { AppState } from './app.service';
@@ -38,7 +38,7 @@ export class AuthService {
           this.appState.set('isDisabled', false);
           this.router.navigate(['/'+page]);
           tempState = _.extend(tempState, this.appState._state);
-          console.log('temp', tempState);
+          // console.log('temp', tempState);
           window.history.pushState(tempState, null, page);
         }
       }).catch(err => console.log("ERROR:", err));

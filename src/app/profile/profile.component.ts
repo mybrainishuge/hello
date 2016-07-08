@@ -22,14 +22,11 @@ export class Profile {
     // public appState: AppState,
     private authService: AuthService,
     private http: Http) {
-
-
   }
 
   ngOnInit() {
     // console.log('Profile component loaded.');
     // this.title.getData().subscribe(data => this.data = data);
-
     this.authService.authenticate('profile');
   }
 
