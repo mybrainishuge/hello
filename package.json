@@ -1,9 +1,9 @@
 {
-  "name": "angular2-webpack-starter",
-  "version": "5.0.5",
-  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
+  "name": "hello",
+  "version": "0.1.0",
+  "description": "An interactive 3D American Sign Language Platform",
+  "author": "digi-talk",
+  "homepage": "https://github.com/digi-talk/hello",
   "license": "MIT",
   "scripts": {
     "rimraf": "rimraf",
