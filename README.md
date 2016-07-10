@@ -1,8 +1,6 @@
-#Hello
+#Hello(http://www.signhello.us/)
 
 An interactive portal for learning american sign languge. Unauthenticated users can only interact with the Learn mode.  Users who don't have a Leap Motion can still study but none of the interactive 3D or custom gesture modes are available.
-
-##[Demo](http://www.signhello.us/)
 
 ##Table of Contents
 * [Team Members](#team-members)
