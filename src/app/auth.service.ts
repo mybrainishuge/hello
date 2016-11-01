@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { AppState } from './app.service';
 import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { envVars } from './env';
 
 @Injectable()
 
@@ -20,16 +21,7 @@ export class AuthService {
     let exp: Date = new Date(localStorage.getItem('exp'));
     let currentDate: Date = new Date();
     let tkn: string = localStorage.getItem('tkn')
-
-    //deployed URL
-    let url: string = `http://52.205.170.83:3333/logins?access_token=${tkn}`;
-    // let url: string = `${process.env.NODE_URL}/logins?access_token=${tkn}`;
-
-
-    //Local Docker Machine URL
-    // let url: string = 'http://192.168.99.100:3333/logins?access_token=' + tkn;
-    //Local host
-    // let url: string = 'http://127.0.0.1:3333/logins?access_token=' + tkn;
+    let url: string = `${envVars.url}logins?access_token=${tkn}`;
 
     if (tkn) {
       this.http.get(url).forEach(response => {
@@ -78,19 +70,11 @@ export class AuthService {
 
   logout() {
     let tkn: string = localStorage.getItem('tkn')
-    // local docker machine
-    // let url: string = 'http://192.168.99.100:3333/access_tokens?access_token=' + tkn;
-    // localhost
-    // let url: string = 'http://127.0.0.1:3333/access_tokens?access_token=' + tkn;
-    // deployed URL
-    let url: string = `http://52.205.170.83:3333/access_tokens?access_token=${tkn}`;
-    // let url: string = `${process.env.NODE_URL}access_tokens?access_token=${tkn}`;
+    let url: string = `${envVars.url}access_tokens?access_token=${tkn}`;
 
     localStorage.clear();
     sessionStorage.clear();
     this.appState.set('authenticated', false);
-    // console.log('navigating to welcome...');
-
     this.http.get(url).forEach(x => console.log('logged out')).catch(err => console.log(err));
     this.router.navigate(['/welcome']);
     window.history.pushState(this.appState._state, null, '');

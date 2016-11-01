@@ -8,6 +8,7 @@ import { SignupService } from './signup.service';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
+import { envVars } from '../env';
 
 @Component({
   selector: 'signup',
@@ -38,13 +39,13 @@ export class Signup implements OnInit {
     if ( form.password !== form.confirm || !form.password || !form.email) {
        //do something else here to handle the error
        //make sure to handle the form fields
-      // console.log('no match');
+      console.log('no match');
       return;
     }
     this.signupService.saveUser(form)
         .subscribe(
           result => {
-            // console.log('signupService result:', result)
+            console.log('signupService result:', result)
             localStorage.setItem('tkn', result[0].access_token);
             localStorage.setItem('exp', result[0].expires_at);
             this.appState.set('authenticated', true);

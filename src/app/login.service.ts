@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Login } from './login/login.ts';
-
+import { envVars } from './env';
 @Injectable()
 
 export class LoginService {
@@ -10,18 +10,10 @@ export class LoginService {
   constructor(private http: Http) { }
 
   public email: string;
-  //deployed URL
-  // urls = `${process.env.NODE_URL}access_tokens`;
-
-  urls = 'http://52.205.170.83:3333/access_tokens';
-  
-  //local docker machine
-  // urls = 'http://192.168.99.100:3333/access_tokens';
-  //local host
-  // urls = 'http://127.0.0.1:3333/access_tokens';
-  public url: string = this.urls; 
+  public url: string = envVars.url + 'access_tokens';
  
   login(data: any): Observable<Response> {
+    console.log(this.url);
     let body = JSON.stringify({
       grant_type: 'password',
       email: data.email,

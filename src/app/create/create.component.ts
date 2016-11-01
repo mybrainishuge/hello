@@ -7,7 +7,7 @@ import { AuthService} from '../auth.service'
 import { CreatePageState } from './createPageState.service';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-
+import { envVars } from '../env';
 
 @Component({
   selector: 'create',
@@ -75,7 +75,7 @@ export class Create implements OnInit {
   }
   save(gestureName): Observable<Response> {
     var tkn = localStorage.getItem('tkn');
-    var url = `http://52.205.170.83:3333/gestures?access_token=${tkn}`;
+    var url = `${envVars.url}gestures?access_token=${tkn}`;
     var gesture = this.leapTrainerService.trainer.gestures[gestureName];
     //TODO: add playback json to data object
     let body = JSON.stringify({
