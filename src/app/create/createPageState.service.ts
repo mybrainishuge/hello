@@ -13,7 +13,7 @@ export class CreatePageState {
     gestureData: [],
     recognizedGesture: '',
     trainingComplete: false,
-    displayGestureOptions: false, 
+    displayGestureOptions: false,
     countdown: null,
     recordingLeft: 2,
     testingHit: null,

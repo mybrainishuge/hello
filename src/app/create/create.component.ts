@@ -1,9 +1,9 @@
-var _ = require('underscore');
+const _ = require('underscore');
 
 import { Component, OnInit } from '@angular/core';
 import { LeapTrainerService } from './services/leapTrainer.service';
 import { AppState } from '../app.service';
-import { AuthService} from '../auth.service'
+import { AuthService} from '../auth.service';
 import { CreatePageState } from './createPageState.service';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -35,29 +35,26 @@ export class Create implements OnInit {
   }
 
   ngOnDestroy() {
-    // console.log('disconnecting leap controller ')
     this.leapTrainerService.trainerCtrl.disconnect();
   }
 
   ngAfterViewInit() {
-    // var event = new Event('ltContainerAdded');
     document.dispatchEvent(new Event('ltContainerAdded'));
   }
 
   setActiveGesture(gestureName) {
-    return this.state.selectedGesture === gestureName ? 'primary' : null;
+    return this.state.selectedGesture === gestureName ? 'primary' : undefined;
   }
 
   recordGesture(gestureName) {
-    //stop listening for gesture matching
+    // stop listening for gesture matching
     this.leapTrainerService.trainer.listening = false;
-    //initialize Recording trainer
+    // initialize Recording trainer
     this.leapTrainerService._initLeapTrainerRecord();
     if (gestureName) {
-      // console.log(gestureName);
       this.leapTrainerService.trainer.create(gestureName.toUpperCase());
     }
-    //TODO: implement UI/X message for no input
+    // TODO: implement UI/X message for no input
   }
 
   stopRecording(gestureName) {
@@ -65,14 +62,14 @@ export class Create implements OnInit {
   }
 
   savedMessage = false;
+
   resetSavedMessage() {
     var fn = _.debounce(() => {
       this.savedMessage = false;
     }, 3000);
     fn();
-    console.log('resetting to ...', this.savedMessage);
-
   }
+
   save(gestureName): Observable<Response> {
     var tkn = localStorage.getItem('tkn');
     var url = `${envVars.url}gestures?access_token=${tkn}`;
@@ -85,16 +82,14 @@ export class Create implements OnInit {
 
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
-    //TODO: handle UI for success and error responses
+    // TODO: handle UI for success and error responses
     this.http.post(url, body, options)
     .forEach(r => {
-      console.log('response back: ', r);
       //TODO: Handle UI for save successful
       this.savedMessage = true;
       this.resetSavedMessage();
     })
     .catch(e => console.log('error', e));
-
     return;
   }
 
@@ -109,21 +104,12 @@ export class Create implements OnInit {
 
     if (selection === gestureName) {
       this.createPageState.set('selectedGesture', '');
-      return;
     }
-
-    this.createPageState.set('selectedGesture', gestureName);
-    //TODO: add more options
-    //display options for : ['Test', ...options]
-
-    // this.createPageState.set('displayGestureOptions', !bool);
-
   }
 
 
   test(gestureName) {
     //signal to Trainer that we are now listening to test a gesture
-    // console.log('gestures', this.leapTrainerService.trainer.gestures);
     this.leapTrainerService._initLeapTrainerWatch();
     this.leapTrainerService.trainer.listening = true;
     this.createPageState.set('currentlyTesting', true);
@@ -131,23 +117,20 @@ export class Create implements OnInit {
 
   update(gestureName) {
     var gesture = this.createPageState.get('gestureData');
-    // console.log("Ok, one sec! Let me see if I can understand this one better");
-    // //only one gesture is being saved so change property to reflect this
-    //-- allows the 'training complete' event to fire when expected (default is after 3 samples saved)
+    //only one gesture is being saved so change property to reflect this
+    // -- allows the 'training complete' event to fire when expected (default is after 3 samples saved)
     this.leapTrainerService.trainer.trainingGestures = 1;
     this.leapTrainerService.trainer.updateTrainingData(gestureName, gesture);
-    // //TODO: handle UI message for currently made gesture to be updated to saved DB -- improves ML
+    // TODO: handle UI message for currently made gesture to be updated to saved DB -- improves ML
   }
 
   reset(gestureName) {
-    // console.log('Attempting to reset value...');
     this.leapTrainerService._initLeapTrainerRecord();
     this.leapTrainerService.trainer.retrain(gestureName);
   }
 
   delete(gestureName) {
     //TODO: remove from gesture list
-    // console.log('deleting...');
     var gestureListKeys = this.createPageState.get('gestureListKeys');
     var idx = gestureListKeys.indexOf(gestureName);
     gestureListKeys.splice(idx, 1);

@@ -17,32 +17,28 @@ export class LeapTrainerService {
 
   _initLeapTrainer() {
     this.trainerCtrl = this.appState._initLeapController(this.deviceStopped_CB.bind(this), this.deviceStreaming_CB.bind(this));
-    // console.log('controller in create!!!!', this.trainerCtrl);
     this.trainerCtrl.connect();
     this.trainer = new this.LeapTrainer.Controller({
       controller: this.trainerCtrl,
-      convolutionFactor: 2, 
+      convolutionFactor: 2,
       trainingGestures: 2
     });
 
   }
 
   deviceStopped_CB() {
-    // console.log('device has stopped streaming');
     this.connected = false;
-    //TODO: handle UI 
+    //TODO: handle UI
   }
 
   deviceStreaming_CB() {
-    // console.log('device has started streaming');
     this.connected = true;
-    //TODO: handle UI 
+    //TODO: handle UI
   }
 
   _initLeapTrainerWatch() {
     //remove all previous event listeners from Record Trainer
     this.trainer.removeAllListeners();
-    // console.log('checking...');
     this.trainer.on('gesture-unknown', (allHits, gesture) => {
       //TODO: UI display for message, hits/percentages returned
       //pause the trainer
@@ -51,9 +47,7 @@ export class LeapTrainerService {
       this.cpS.set('gestureData', gesture);
 
 
-      console.log('unknown', allHits);
       let name = this.cpS.get('selectedGesture');
-      console.log('nameeee', allHits[name]);
       this.cpS.set('testingHit', allHits[name]);
       this.cpS.set('testingMessage', 'unknown');
       this.cpS.set('showTestingMessage', true);
@@ -67,7 +61,7 @@ export class LeapTrainerService {
     this.trainer.on('gesture-recognized', (bestHit, closestGestureName, allHits) => {
       //TODO: handle UI message for this event
 
-      console.log('Gesture recognized:', closestGestureName);
+      // console.log('Gesture recognized:', closestGestureName);
       this.cpS.set('testingMessage', 'recognized');
       this.cpS.set('showTestingMessage', true);
         setTimeout(() => {
@@ -75,13 +69,10 @@ export class LeapTrainerService {
       }, 3000);
       this.cpS.set('currentlyTesting', false);
 
-      // console.log('Gesture recognized:', closestGestureName);
     });
 
     this.trainer.on('update-complete', (gestureName, trainingGestures, isPose) => {
       //TODO: handle UI message for this event
-      // console.log("Ok, I think I got it! I'll make sure to recognize ", gestureName, ' better next time!');
-      // console.log('data length: ', trainingGestures.length);
     });
   }
 
@@ -91,13 +82,11 @@ export class LeapTrainerService {
     this.trainer.trainingGestures = 2;
     this.trainer.on('gesture-created', (gestureName, trianingSkipped) => {
       //TODO: show the div element or component that renders this message on the page
-      // console.log('We are now recording...');
       this.cpS.set('recordingLeft', 2);
     });
 
     this.trainer.on('training-countdown', (countdown) => {
       //TODO: display to user countdown
-      // console.log(countdown);
       this.cpS.set('countdown', countdown);
       if (countdown === 1) {
         setTimeout(() => {

@@ -12,7 +12,6 @@ export class AppState {
     authenticated: false,
     learnPage: false,
     isDisabled: true,
-    myName: 'Richard',
     title: 'hello',
     google: false,
     userEmail: ''
@@ -24,10 +23,9 @@ export class AppState {
   public gestureUrl: string = this.url;
 
   constructor(private http: Http) {
-    // retrieve gestures from database and store in client's localStorage 
-         // let path = window.location.href.split('/');
-         // window.history.pushState(this.appState._state, null, path[path.length -1]);
-         // console.log(history.state);
+    // retrieve gestures from database and store in client's localStorage
+      // let path = window.location.href.split('/');
+      // window.history.pushState(this.appState._state, null, path[path.length -1]);
       // localStorage.setItem('gestures', JSON.stringify(result));
   }
 
@@ -78,16 +76,15 @@ export class AppState {
   }
 
   _initLeapController(deviceStopped_CB, deviceStreaming_CB) {
-    var Leap = require('leapjs');
+    let Leap = require('leapjs');
     require('./lib/leap-plugins.js');
     require('./lib/riggedHand.js');
-    var controller = new Leap.Controller();
+    let controller = new Leap.Controller();
 
-    //connect ctrl at the end of logic
+    // connect ctrl at the end of logic
     controller.use('riggedHand');
     controller.on('deviceStopped', deviceStopped_CB);
     controller.on('deviceStreaming', deviceStreaming_CB);
-      // .on('connect', () => console.log('Controller connected.'));
     return controller;
   }
 }

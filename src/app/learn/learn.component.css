@@ -52,12 +52,13 @@ md-toolbar {
 }
 
 .hand-container {
-  position:absolute;
-  bottom:0px;
-  width:100%;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }
 
 .hand-image {
+  /*position: absolute;*/
   display: flex;
   margin-left: auto;
   margin-right: auto;

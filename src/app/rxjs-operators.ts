@@ -1,11 +1,11 @@
 
-//This file imports only the rxJs operators that we need for this application
+// This file imports only the rxJs operators that we need for this application
 
-//Statics
+// Statics
 import 'rxjs/add/observable/throw';
 
 
-//Operators
+// Operators
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';

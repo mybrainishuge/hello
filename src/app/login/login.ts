@@ -7,14 +7,14 @@ import { WelcomeStateService } from '../welcomeState/welcomeState.service';
 
 @Component({
   selector: 'login',
-  directives: [FORM_DIRECTIVES],
+  directives: [ FORM_DIRECTIVES ],
   template: require('./login.html'),
   styles: [require('./login.css')],
-  providers: [AppState]
+  providers: [ AppState ]
 })
 
 export class Login implements OnInit {
-  myForm: ControlGroup;
+  private myForm: ControlGroup;
 
   constructor(
     private loginService: LoginService,
@@ -25,7 +25,7 @@ export class Login implements OnInit {
     this.myForm = fb.group({
       'email': [],
       'password': []
-    })
+    });
   }
 
   ngOnInit() { }
@@ -43,7 +43,7 @@ export class Login implements OnInit {
             this.appState.set('email', result[0].email);
             // console.log('navigating to profile page now...', this.appState.get('authenticated'));
             this.router.navigate(['/profile']);
-            window.history.pushState(this.appState._state, null, 'profile');
+            window.history.pushState(this.appState._state, undefined, 'profile');
           },
           error => console.log(error));
   }

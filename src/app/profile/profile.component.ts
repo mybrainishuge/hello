@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService} from '../auth.service'
+import { AuthService} from '../auth.service';
 import { AppState } from '../app.service';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { envVars } from '../env';
@@ -22,21 +22,18 @@ export class Profile {
     // public appState: AppState,
     private authService: AuthService,
     private http: Http) {
-
-
   }
 
   ngOnInit() {
     // console.log('Profile component loaded.');
     // this.title.getData().subscribe(data => this.data = data);
-
     this.authService.authenticate('profile');
   }
 
 
   submitEmail(email1, email2) {
     // console.log('submitState', value);
-    //get the user id
+    // get the user id
 
     this.localState.email1 = email1;
     this.localState.email2 = email2;
@@ -48,8 +45,8 @@ export class Profile {
         this.localState.userId = r[0].id;
       }).catch(error => console.log(error));
 
-      //left off here --- need to add the url plus id to make the put
-     // let putUrl = this.url +
+      // left off here --- need to add the url plus id to make the put
+      // let putUrl = this.url +
 
     } else {
       alert('Both fields must match.');

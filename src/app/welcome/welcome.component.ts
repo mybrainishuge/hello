@@ -15,17 +15,31 @@ import { WelcomeStateService } from '../welcomeState/welcomeState.service';
 
 @Component({
   selector: 'welcome',
-  directives: [ WelcomeContent, Signup, Login, NgSwitch, NgSwitchDefault, NgSwitchWhen, Profile, Learn ],
-  // providers: [ LoginService, SignupService, ROUTER_PROVIDERS, AuthService, AppState, WelcomeStateService],
-  providers: [ LoginService, SignupService, AuthService, AppState, WelcomeStateService],
+  directives: [
+    WelcomeContent,
+    Signup,
+    Login,
+    NgSwitch,
+    NgSwitchDefault,
+    NgSwitchWhen,
+    Profile,
+    Learn
+  ],
+  providers: [
+    LoginService,
+    SignupService,
+    AuthService,
+    AppState,
+    WelcomeStateService
+  ],
   template: require('./welcome.component.html'),
   styles: [ require('./welcome.component.css') ]
 })
 
 export class Welcome implements OnInit {
 
-  hands: string = 'assets/img/hands.png'
-  bg: string = 'assets/img/bg.png'
+  hands: string = 'assets/img/hands.png';
+  bg: string = 'assets/img/bg.png';
 
   constructor(
     private appState: AppState,

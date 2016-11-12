@@ -18,6 +18,7 @@ export class Play implements OnInit {
   private results = [];
   private intervalId;
   private checkLetterTimer;
+  private connected = false;
 
   constructor(
     private appState: AppState,
@@ -27,7 +28,6 @@ export class Play implements OnInit {
     private letterCheckingService: LetterCheckingService ) {
   }
 
-  connected = false;
 
   deviceStopped_CB() {
     this.connected = false;

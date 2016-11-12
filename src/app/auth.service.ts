@@ -1,4 +1,4 @@
-var _ = require('underscore');
+const _ = require('underscore');
 
 import { Injectable } from '@angular/core';
 import { AppState } from './app.service';
@@ -16,7 +16,7 @@ export class AuthService {
     private http: Http) { }
 
   authenticate (page) {
-    //get token
+    // get token
 
     let exp: Date = new Date(localStorage.getItem('exp'));
     let currentDate: Date = new Date();
@@ -25,44 +25,39 @@ export class AuthService {
 
     if (tkn) {
       this.http.get(url).forEach(response => {
-        var tempState = window.history.state;
+        let tempState = window.history.state;
 
         let a = response.json();
-        if(a.data[0] !== "Authorized") {
+        if (a.data[0] !== 'Authorized') {
           this.appState.set('authenticated', true);
           this.appState.set('learn', true);
           this.router.navigate(['/welcome']);
-          window.history.replaceState(null, null, '');
+          window.history.replaceState(undefined, undefined, '');
         } else {
           this.appState.set('authenticated', true);
           this.appState.set('isDisabled', false);
-          this.router.navigate(['/'+page]);
+          this.router.navigate([`/${page}`]);
           tempState = _.extend(tempState, this.appState._state);
-          console.log('temp', tempState);
-          window.history.pushState(tempState, null, page);
+          window.history.pushState(tempState, undefined, page);
         }
-      }).catch(err => console.log("ERROR:", err));
+      }).catch(err => console.log('ERROR:', err));
     } else {
       this.router.navigate(['/welcome']);
-      window.history.replaceState(null, null, '');
+      window.history.replaceState(undefined, undefined, '');
     }
 
 
     // if(tkn && exp > currentDate) {
     //   //logged in
-    //   console.log('LOGGED IN');
-    //    console.log(this.appState._state.learnPage, '11111');
-
     //   this.appState.set('authenticated', true);
     //   // this.appState.learn =true;
     //   this.router.navigate(['/'+page]);
-    //   window.history.pushState(null, null, page);
+    //   window.history.pushState(undefined, undefined, page);
     //   // this.appState.landing = 'profile';
     //   return true;
     // } else {
-    //   console.log('LOGGED OUT', exp, tkn)
     //   this.router.navigate(['/welcome']);
-    //   window.history.replaceState(null, null, '');
+    //   window.history.replaceState(undefined, undefined, '');
 
     //   return false;
     // }
@@ -77,15 +72,15 @@ export class AuthService {
     this.appState.set('authenticated', false);
     this.http.get(url).forEach(x => console.log('logged out')).catch(err => console.log(err));
     this.router.navigate(['/welcome']);
-    window.history.pushState(this.appState._state, null, '');
+    window.history.pushState(this.appState._state, undefined, '');
   }
 
-  learnRoute() {
+  // learnRoute() {
     // this.appState.learn=true;
     // this.appState.isDisabled=true;
     // this.appState.landing='learn'
     // this.appState.authenticated=true;
     // this.router.navigate(['Learn']);
-  }
+  // }
 
 }

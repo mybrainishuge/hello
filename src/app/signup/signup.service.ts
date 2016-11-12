@@ -10,7 +10,6 @@ export class SignupService {
 
   private url: string = envVars.url + 'users';
 
-  
   constructor(private http: Http) { }
 
   saveUser(data: any): Observable<Response> {
@@ -32,7 +31,7 @@ export class SignupService {
 
   private handleError(error: any) {
     let errBody = JSON.parse(error._body);
-    let errMsg = errBody.meta.error.message
+    let errMsg = errBody.meta.error.message;
     return Observable.throw(errMsg);
   }
 
