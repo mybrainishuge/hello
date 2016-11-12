@@ -53,7 +53,6 @@ export class App {
     ) { }
 
   ngDoCheck() {
-    // console.log('browser history saved state...: ', window.history.state);
     if (window.history.state) {
       this.learnPage = window.history.state.learnPage;
       this.authenticated = window.history.state.authenticated;
@@ -64,15 +63,11 @@ export class App {
 
   navToPage(page) {
     page = page.toLowerCase();
-    // console.log(`/${page}`);
     this.router.navigate([`/${page}`]);
     window.history.pushState(undefined, undefined, page);
   }
 
-  ngOnInit() {
-    // console.log('Initial App State', this.appState.state);
-    // console.log('app comp loaded', this.appState.get('authenticated'));
-  }
+  ngOnInit() { }
 
   routeToWelcome() {
     this.appState.set('welcome', true);

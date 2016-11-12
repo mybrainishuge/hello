@@ -38,7 +38,6 @@ export class AuthService {
           this.appState.set('isDisabled', false);
           this.router.navigate([`/${page}`]);
           tempState = _.extend(tempState, this.appState._state);
-          // console.log('temp', tempState);
           window.history.pushState(tempState, undefined, page);
         }
       }).catch(err => console.log('ERROR:', err));
@@ -50,9 +49,6 @@ export class AuthService {
 
     // if(tkn && exp > currentDate) {
     //   //logged in
-    //   console.log('LOGGED IN');
-    //    console.log(this.appState._state.learnPage, '11111');
-
     //   this.appState.set('authenticated', true);
     //   // this.appState.learn =true;
     //   this.router.navigate(['/'+page]);
@@ -60,7 +56,6 @@ export class AuthService {
     //   // this.appState.landing = 'profile';
     //   return true;
     // } else {
-    //   console.log('LOGGED OUT', exp, tkn)
     //   this.router.navigate(['/welcome']);
     //   window.history.replaceState(undefined, undefined, '');
 
@@ -80,12 +75,12 @@ export class AuthService {
     window.history.pushState(this.appState._state, undefined, '');
   }
 
-  learnRoute() {
+  // learnRoute() {
     // this.appState.learn=true;
     // this.appState.isDisabled=true;
     // this.appState.landing='learn'
     // this.appState.authenticated=true;
     // this.router.navigate(['Learn']);
-  }
+  // }
 
 }

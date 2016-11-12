@@ -12,7 +12,6 @@ export class AppState {
     authenticated: false,
     learnPage: false,
     isDisabled: true,
-    // myName: 'Richard',
     title: 'hello',
     google: false,
     userEmail: ''
@@ -25,9 +24,8 @@ export class AppState {
 
   constructor(private http: Http) {
     // retrieve gestures from database and store in client's localStorage
-         // let path = window.location.href.split('/');
-         // window.history.pushState(this.appState._state, null, path[path.length -1]);
-         // console.log(history.state);
+      // let path = window.location.href.split('/');
+      // window.history.pushState(this.appState._state, null, path[path.length -1]);
       // localStorage.setItem('gestures', JSON.stringify(result));
   }
 
@@ -87,7 +85,6 @@ export class AppState {
     controller.use('riggedHand');
     controller.on('deviceStopped', deviceStopped_CB);
     controller.on('deviceStreaming', deviceStreaming_CB);
-      // .on('connect', () => console.log('Controller connected.'));
     return controller;
   }
 }
